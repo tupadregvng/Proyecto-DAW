@@ -21,24 +21,30 @@
 </html>
 <?php
 require 'vendor/autoload.php'; // Cargar librería de MongoDB
+use MongoDB\Driver\Exception\Exception;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Capturar datos del formulario
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $role = 1; // Asignar rol de administrador (1 para admin)
 
-    // Conectar a MongoDB
-    $client = new MongoDB\Client("mongodb://localhost:27017");
-    $collection = $client->registro->users; // Base de datos, carpeta 'registro', colección/tabla 'users'
+    try {
+        // Conectar a MongoDB
+        $client = new MongoDB\Client("mongodb://localhost:27017");
+        $collection = $client->registro->usuarios; // Base de datos, carpeta 'registro', colección 'usuarios'
 
-    // Insertar datos esto con las flechitas crea un hashmap
-    $result = $collection->insertOne([
-        'name' => $name,
-        'email' => $email,
-        'password' => $password, // No es seguro, pero vale por ahora
-    ]);
+        // Insertar datos en la base de datos
+        $result = $collection->insertOne([
+            'email' => $email,
+            'password' => $password, // Contraseña sin encriptar por ahora
+            'role' => $role, // Rol de administrador
+        ]);
 
-    echo "Usuario registrado con ID: " . $result->getInsertedId();
+        echo "Usuario registrado con ID: " . $result->getInsertedId();
+    } catch (Exception $e) {
+        echo "Error al registrar el usuario: " . $e->getMessage();
+    }
 }
 ?>
