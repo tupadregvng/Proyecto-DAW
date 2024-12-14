@@ -1,0 +1,133 @@
+/*Estilo general del body*/
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: #740303;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px); /* Para que el contenido ocupe el espacio restante */
+}
+
+h2 {
+    color: #333;
+}
+
+/* Estilos del contenido en cada sección */
+section {
+    margin-bottom: 20px;
+}
+
+/* Estilos del menú lateral (sidebar) */
+.sidebar {
+    width: 250px;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 60px;
+    box-shadow: 2px 0px 5px rgba(0,0,0,0.2);
+}
+
+.sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    border-bottom: 1px solid #444;
+}
+
+.sidebar a:hover {
+    background-color: #bb1414;
+}
+
+/*Estilos de la tabla seccion estado de la motocicleta*/
+table {
+    width: 300px;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #740303;
+}
+  
+td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #740303;
+}
+  
+td:first-child {
+    width: 50%;
+    font-weight: bold; /* Resaltar el texto "ESTADO" */
+    color: white;
+    background-color:#740303;
+}
+
+/* Estilos generales para el formulario */
+form {
+    max-width: 600px;
+    margin: 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+/*Estilos de los textos informativos del formulario*/
+label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/*Estilo del selector de horas*/
+#horas{
+    padding: 3px;
+    margin-bottom: 20px;
+}
+  
+/* Estilo para el área de texto (textarea) */
+textarea {
+    width: 100%; /* Hacer que el recuadro ocupe todo el ancho disponible */
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: vertical; /* Permitir al usuario cambiar el tamaño solo en la dirección vertical */
+    box-sizing: border-box; /* Para incluir el padding dentro del tamaño del textarea */
+    transition: border-color 0.3s ease;
+}
+  
+/* Estilo del botón */
+button {
+    padding: 10px 20px;
+    background-color:#740303;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+  
+button:hover {
+    background-color: #bb1414; /* Cambiar el color de fondo del botón cuando el ratón pasa por encima */
+}
