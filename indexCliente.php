@@ -7,15 +7,15 @@
     <title>Cliente</title>
 </head>
 <body>
-    <header>
-    <h1>Bienvenido Cliente</h1>
-    </header>
     <div class="sidebar">
             <a href="#estado-motocicleta">ESTADO DE MOTOCICLETA</a>
             <a href="#pedir-cita">PEDIR CITA</a>
             <a href="tiendaWeb.html">REALIZAR COMPRAS</a>
     </div>
     <div class="main-content">
+        <div class="header">
+            <h1>BIENVENIDO CLIENTE</h1>
+        </div>
         
         <section id="estado-motocicleta">
             <h2>Estado de Motocicleta</h2>

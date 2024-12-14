@@ -5,6 +5,7 @@
     padding: 0;
 }
 
+/*Estilo elementos generales*/
 html, body {
     margin: 0;
     padding: 0;
@@ -19,17 +20,19 @@ h2, p {
     color: #333;
     margin-top:2%;
     margin-bottom: 2%;
+    text-align: center;
 }
 
 
 
 /* Estilos del encabezado */
-header {
+.header {
     background-color: #740303;
     color: white;
     text-align: center;
     padding: 20px;
     width: 100%;
+
 }
 
 /* Estilo general del body y layout */
@@ -44,7 +47,6 @@ body {
 .main-content {
     display: flex;
     margin-left: 250px; /* Espacio reservado para la sidebar */
-    padding: 20px;
     flex: 1; /* Hacer que ocupe todo el espacio restante */
     width: calc(100% - 250px); /* Ajustar al ancho restante */
     overflow-x: hidden; /* Prevenir desbordamientos horizontales */
