@@ -6,17 +6,17 @@
     <link rel="stylesheet" href="indexCliente.css">
     <title>Cliente</title>
 </head>
-<header>
-    <h1>Bienvenido Cliente</h1>
-</header>
 <body>
+    <header>
+    <h1>Bienvenido Cliente</h1>
+    </header>
     <div class="sidebar">
-        <a href="#estado-motocicleta">ESTADO DE MOTOCICLETA</a>
-        <a href="#pedir-cita">PEDIR CITA</a>
-        <a href="#realizar-compras">REALIZAR COMPRAS</a>
+            <a href="#estado-motocicleta">ESTADO DE MOTOCICLETA</a>
+            <a href="#pedir-cita">PEDIR CITA</a>
+            <a href="tiendaWeb.html">REALIZAR COMPRAS</a>
     </div>
-
     <div class="main-content">
+        
         <section id="estado-motocicleta">
             <h2>Estado de Motocicleta</h2>
             <p>Consulta aquí el estado de tu motocicleta.</p>
@@ -27,7 +27,6 @@
                     <th>Estado</th>
                 </tr>
               </table>
-
         </section>
 
         <section id="pedir-cita">
@@ -56,11 +55,6 @@
                 <textarea id="observacion" name="observaciones"rows="4" cols="50" placeholder="Explica brevemente el problema de tu motocicleta..."></textarea>
                 <button type="submit">Pedir cita</button>
             </form>
-        </section>
-
-        <section id="realizar-compras">
-            <h2>Realizar Compras</h2>
-            <p>Compra accesorios y repuestos para tu motocicleta.</p>
         </section>
     </div>
 </body>
