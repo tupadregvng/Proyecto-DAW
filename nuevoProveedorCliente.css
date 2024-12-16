@@ -6,26 +6,13 @@ body {
     height: 100%;
 }
 
-/* Estilos para las secciones */
-section {
-    margin-bottom: 20px;
-}
-
-/* Estilos de la tabla en la sección "estado de la motocicleta" */
-table {
-    width: 100%; /* Hacer la tabla responsive */
-    max-width: 600px;
-    border-spacing: 0;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid #740303;
-    margin: 0 auto; /* Centrar la tabla */
-}
-
-td, th {
+/*Estilos de los inputs e interacciones del ususrio*/
+input, select, textarea {
+    width: 100%;
     padding: 10px;
-    text-align: center;
-    border: 1px solid #740303;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 /* Estilos generales para el formulario */
@@ -46,13 +33,6 @@ label {
     display: block;
 }
 
-/* Estilo del selector de horas */
-#horas {
-    padding: 3px;
-    margin-bottom: 20px;
-    width: 100%; /* Hacer el selector responsive */
-}
-
 /* Estilo para el área de texto (textarea) */
 textarea {
     width: 100%;
@@ -63,4 +43,10 @@ textarea {
     resize: vertical;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
+}
+
+#botones{
+    display: flex;
+    justify-content:center;
+    margin-top: 10%;
 }
