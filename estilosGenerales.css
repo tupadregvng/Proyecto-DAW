@@ -1,0 +1,88 @@
+/* Aplicar box-sizing global para evitar problemas de cálculo de ancho y padding */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*Estilo elementos generales*/
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Prevenir scroll horizontal inesperado */
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
+h2, p {
+    color: #333;
+    margin-top:2%;
+    margin-bottom: 2%;
+    text-align: center;
+}
+
+/* Estilos del encabezado */
+.header {
+    background-color: #740303;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    margin-bottom: 2%;
+
+}
+/* Estilos del contenido principal */
+.main-content {
+    display: flex;
+    margin-left: 250px; /* Espacio reservado para la sidebar */
+    flex: 1; /* Hacer que ocupe todo el espacio restante */
+    width: calc(100% - 250px); /* Ajustar al ancho restante */
+    overflow-x: hidden; /* Prevenir desbordamientos horizontales */
+    flex-direction: column;
+}
+/* Estilos del menú lateral (sidebar) */
+.sidebar {
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 80px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
+    overflow-y: auto; /* Permitir scroll si el contenido es demasiado alto */
+}
+
+.sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    border-bottom: 1px solid #444;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+    background-color: #bb1414;
+}
+
+/* Estilo del botón */
+button {
+    padding: 10px 20px;
+    background-color: #740303;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    width: auto;
+}
+
+button:hover {
+    background-color: #bb1414;
+}
