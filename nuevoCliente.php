@@ -52,7 +52,7 @@
             <input type="text" id="matricula" name="matricula" placeholder="Ingrese la matrícula de la motocicleta" required>
 
             <!-- Nº bastidor -->
-            <label for="bastidor">Nº Batidor:</label>
+            <label for="bastidor">Nº Bastidor:</label>
             <input type="text" id="bastidor" name="bastidor" placeholder="Ingrese el número de bastidor de la motocicleta" required>
 
             <!-- F.entrada -->
