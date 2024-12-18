@@ -46,7 +46,8 @@ h2, p {
 .sidebar {
     width: 250px;
     height: 100%;
-    background-color: #333;
+    background-image: url('img/circuito.jpg');
+    background-position: 70% 60%;
     position: fixed;
     top: 0;
     left: 0;
