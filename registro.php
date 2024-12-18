@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'email' => $email,
             'password' => $password, // Contraseña sin encriptar por ahora
             'role' => $role, // Rol de administrador
+            'name' => $name
         ]);
 
         echo "Usuario registrado con ID: " . $result->getInsertedId();
