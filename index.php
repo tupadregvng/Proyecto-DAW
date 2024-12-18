@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $_SESSION['role'] = $user['role'];
 
       // Redirigir al dashboard
-      header(header: 'Location: gestionarCliente.php');
+      header(header: 'Location: indexAdmin.php');
       exit();
     } else {
       $error = "Correo o contraseña inválidos.";
