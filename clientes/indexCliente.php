@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilosGenerales.css">
+    <link rel="stylesheet" href="../estilosGenerales.css">
     <link rel="stylesheet" href="indexCliente.css">
     <title>Cliente</title>
 </head>
@@ -11,7 +11,7 @@
     <div class="sidebar">
             <a href="#estado-motocicleta">ESTADO DE MOTOCICLETA</a>
             <a href="#pedir-cita">PEDIR CITA</a>
-            <a href="tiendaWeb.html">REALIZAR COMPRAS</a>
+            <a href="../tiendaWeb.html">REALIZAR COMPRAS</a>
     </div>
     <div class="main-content">
         <div class="header">
@@ -34,6 +34,9 @@
             <h2>Pedir Cita</h2>
             <p>Programa una cita para el mantenimiento o revisión de tu motocicleta.</p>
             <form id="registro-citas">
+                <label for="fecha">Selecciona una fecha:</label>
+                <input type="date" id="fecha" name="fecha">
+                <br><br>
                 <label for="horas">Hora de la cita</label>
                 <select name="horas" id="horas">
                     <option value="8:00">8:00</option>

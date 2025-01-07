@@ -1,3 +1,6 @@
+/* Importar estilos */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
 /* Aplicar box-sizing global para evitar problemas de cálculo de ancho y padding */
 * {
     box-sizing: border-box;
@@ -16,6 +19,10 @@ html, body {
     font-family: Arial, sans-serif;
 }
 
+h1, h2{
+    font-family: "Audiowide", serif;
+}
+
 h2, p {
     color: #333;
     margin-top:2%;
@@ -25,7 +32,7 @@ h2, p {
 
 /* Estilos del encabezado */
 .header {
-    background-color: #740303;
+    background-image: url(img/fondorojo.jpg);
     color: white;
     text-align: center;
     padding: 20px;
@@ -46,7 +53,7 @@ h2, p {
 .sidebar {
     width: 250px;
     height: 100%;
-    background-image: url('img/circuito.jpg');
+    background-image: url('img/bandaDeRodadura.jpg');
     background-position: 70% 60%;
     position: fixed;
     top: 0;
@@ -57,6 +64,9 @@ h2, p {
 }
 
 .sidebar a {
+    font-family: "Audiowide", serif;
+    background-color: #740303;
+    opacity: 0.7;
     padding: 15px 25px;
     text-decoration: none;
     font-size: 18px;
@@ -68,6 +78,7 @@ h2, p {
 
 .sidebar a:hover {
     background-color: #bb1414;
+    opacity: 1;
 }
 
 /* Estilo del botón */
