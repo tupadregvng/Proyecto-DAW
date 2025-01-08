@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user && $user['password'] === $password) {
       // Almacenar información del usuario en la sesión
       $_SESSION['user_id'] = (string) $user['_id'];
+      $_SESSION['name'] = $user['name'];
       $_SESSION['email'] = $user['email'];
       $_SESSION['role'] = $user['role'];
 

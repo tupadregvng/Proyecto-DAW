@@ -12,6 +12,7 @@
     try {
         // Conectar a MongoDB
         $client = new MongoDB\Client("mongodb://localhost:27017");
+        
         $collection = $client->clientes->citas; 
         
         // Insertar datos en la base de datos

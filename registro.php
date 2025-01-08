@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Insertar datos en la base de datos
         $result = $collection->insertOne([
+            'name' => $name,
             'email' => $email,
             'password' => $password, // Contraseña sin encriptar por ahora
             'role' => $role, // Rol de administrador
