@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $role = 1; // Asignar rol de administrador (1 para admin)
+    $role = 0; // Asignar rol de cliente (0)por defecto
 
     try {
         // Conectar a MongoDB

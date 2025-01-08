@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +14,7 @@
 <body>
     <div class="sidebar">
             <a href="#estado-motocicleta">ESTADO DE MOTOCICLETA</a>
-            <a href="#pedir-cita">PEDIR CITA</a>
+            <a href="#cita">CITAS</a>
             <a href="../tiendaWeb.html">REALIZAR COMPRAS</a>
     </div>
     <div class="main-content">
@@ -30,7 +33,7 @@
                 </tr>
               </table>
         </section>
-        <section id="pedir-cita">
+        <section id="cita">
             <h2>Pedir Cita</h2>
             <p>Programa una cita para el mantenimiento o revisión de tu motocicleta.</p>
             <form id="registro-citas" action="pedirCita.php" method="POST">
