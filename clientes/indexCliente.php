@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilosGenerales.css">
     <link rel="stylesheet" href="indexCliente.css">
+    <script src="registroExitoCita.js"></script>
     <title>Cliente</title>
 </head>
 <body>

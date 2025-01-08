@@ -20,7 +20,7 @@
             'hora' => $hora, 
             'observaciones' => $observacion,
         ]);
-        header("Location: indexCliente.php");
+        header("Location: indexCliente.php?registro=exito");
     } catch (Exception $e) {
         $error = "Error al conectar con la base de datos: " . $e->getMessage();
     }
