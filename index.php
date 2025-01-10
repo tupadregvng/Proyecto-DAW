@@ -2,9 +2,8 @@
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <div class="login wrap">
-  <form method="post">
-    <input type="text" name="email" id="email" placeholder="Email"
-      pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" />
+  <form action = "index.php" method = "POST">
+    <input type="text" name="email" id="email" placeholder="Email" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" />
     <input type="password" name="password" id="password" placeholder="Contraseña" />
     <input type="submit" value="Log in" />
   </form>
@@ -28,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   try {
     // Conectar a MongoDB
     $client = new MongoDB\Client("mongodb://localhost:27017");
-    $collection = $client->registro->usuarios; // Acceder a la colección 'usuarios' en la base de datos 'registro'
+    $collection = $client->gestor->usuarios; // Acceder a la colección 'usuarios' en la base de datos 'gestor'
 
     // Buscar al usuario por correo electrónico
     $user = $collection->findOne(['email' => $email]);
@@ -37,15 +36,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user && $user['password'] === $password) {
       // Almacenar información del usuario en la sesión
       $_SESSION['user_id'] = (string) $user['_id'];
+      $_SESSION['name'] = $user['name'];
       $_SESSION['email'] = $user['email'];
       $_SESSION['role'] = $user['role'];
 
       // Redirigir al dashboard
-      header(header: 'Location: admin/indexAdmin.php');
-      exit();
+      if($user['role'] === 0){
+        header('Location: clientes/indexCliente.php');
+        exit();
+      }else{
+        header('Location: indexAdmin.php');
+        exit();
+      }
     } else {
       $error = "Correo o contraseña inválidos.";
-      echo ($error);
+      echo($error);
     }
   } catch (Exception $e) {
     $error = "Error al conectar con la base de datos: " . $e->getMessage();

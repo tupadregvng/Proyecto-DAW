@@ -28,19 +28,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $role = 1; // Asignar rol de administrador (1 para admin)
+    $role = 0; // Asignar rol de cliente (0)por defecto
 
     try {
         // Conectar a MongoDB
         $client = new MongoDB\Client("mongodb://localhost:27017");
-        $collection = $client->registro->usuarios; // Base de datos, carpeta 'registro', colección 'usuarios'
+        $collection = $client->gestor->usuarios; // Base de datos, carpeta 'gestor', colección 'usuarios'
 
         // Insertar datos en la base de datos
         $result = $collection->insertOne([
+            'name' => $name,
             'email' => $email,
             'password' => $password, // Contraseña sin encriptar por ahora
             'role' => $role, // Rol de administrador
-            'name' => $name
         ]);
 
         echo "Usuario registrado con ID: " . $result->getInsertedId();

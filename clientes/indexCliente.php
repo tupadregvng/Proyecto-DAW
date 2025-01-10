@@ -1,21 +1,28 @@
+<?php
+    session_start(); // Iniciar sesión
+    $nombre = $_SESSION['name'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilosGenerales.css">
+    <link rel="stylesheet" href="../estilosGenerales.css">
     <link rel="stylesheet" href="indexCliente.css">
+    <script src="registroExitoCita.js"></script>
     <title>Cliente</title>
 </head>
 <body>
     <div class="sidebar">
             <a href="#estado-motocicleta">ESTADO DE MOTOCICLETA</a>
-            <a href="#pedir-cita">PEDIR CITA</a>
-            <a href="tiendaWeb.html">REALIZAR COMPRAS</a>
+            <a href="#cita">CITAS</a>
+            <a href="../tiendaWeb.html">REALIZAR COMPRAS</a>
     </div>
     <div class="main-content">
         <div class="header">
-            <h1>BIENVENIDO CLIENTE</h1>
+            <?php
+            echo"<h1>BIENVENIDO ".$nombre."</h1>"
+            ?>
         </div>
         
         <section id="estado-motocicleta">
@@ -29,13 +36,15 @@
                 </tr>
               </table>
         </section>
-
-        <section id="pedir-cita">
+        <section id="cita">
             <h2>Pedir Cita</h2>
             <p>Programa una cita para el mantenimiento o revisión de tu motocicleta.</p>
-            <form id="registro-citas">
+            <form id="registro-citas" action="pedirCita.php" method="POST">
+                <label for="fecha">Selecciona una fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+                <br><br>
                 <label for="horas">Hora de la cita</label>
-                <select name="horas" id="horas">
+                <select name="horas" id="horas" required>
                     <option value="8:00">8:00</option>
                     <option value="8:30">8:30</option>
                     <option value="9:00">9:00</option>
@@ -53,7 +62,7 @@
                     <option value="15:00">15:00</option>
                 </select>
                 <label for="observacion">Motivo de la cita</label>
-                <textarea id="observacion" name="observaciones"rows="4" cols="50" placeholder="Explica brevemente el problema de tu motocicleta..."></textarea>
+                <textarea id="observacion" name="observaciones"rows="4" cols="50" placeholder="Explica brevemente el problema de tu motocicleta..." required></textarea>
                 <button type="submit">Pedir cita</button>
             </form>
         </section>
