@@ -1,6 +1,15 @@
 <?php
     session_start(); // Iniciar sesión
     $nombre = $_SESSION['name'];
+
+    // Conectar a MongoDB
+    require '../vendor/autoload.php'; // Cargar librería de MongoDB
+    use MongoDB\Driver\Exception\Exception;
+    $client = new MongoDB\Client("mongodb://localhost:27017");
+    $collection = $client->gestor->citas;
+
+    // Obtener citas de la base de datos
+    $citas = $collection->find(['cliente' => $nombre]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,58 +22,88 @@
     <title>Cliente</title>
 </head>
 <body>
+    <!-- Menú lateral -->
     <div class="sidebar">
-            <a href="#estado-motocicleta">ESTADO DE MOTOCICLETA</a>
-            <a href="#cita">CITAS</a>
-            <a href="../tiendaWeb.html">REALIZAR COMPRAS</a>
+        <a href="#estado-motocicleta">ESTADO DE MOTOCICLETA</a>
+        <a href="#cita">CITAS</a>
+        <a href="#pedir-cita">PEDIR CITA</a>
+        <a href="../tiendaWeb.html">REALIZAR COMPRAS</a>
     </div>
     <div class="main-content">
+        <!-- Título superior -->
         <div class="header">
             <?php
             echo"<h1>BIENVENIDO ".$nombre."</h1>"
             ?>
         </div>
-        
+        <!-- sección para la visualización del estado de la motocicleta -->
         <section id="estado-motocicleta">
             <h2>Estado de Motocicleta</h2>
             <p>Consulta aquí el estado de tu motocicleta.</p>
             <table>
-                <tr>
+                <tr class="headerTabla">
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Estado</th>
                 </tr>
-              </table>
+            </table>
         </section>
+
+        <!-- citas -->
         <section id="cita">
-            <h2>Pedir Cita</h2>
-            <p>Programa una cita para el mantenimiento o revisión de tu motocicleta.</p>
-            <form id="registro-citas" action="pedirCita.php" method="POST">
-                <label for="fecha">Selecciona una fecha:</label>
-                <input type="date" id="fecha" name="fecha" required>
-                <br><br>
-                <label for="horas">Hora de la cita</label>
-                <select name="horas" id="horas" required>
-                    <option value="8:00">8:00</option>
-                    <option value="8:30">8:30</option>
-                    <option value="9:00">9:00</option>
-                    <option value="9:30">9:30</option>
-                    <option value="10:00">10:00</option>
-                    <option value="10:30">10:30</option>
-                    <option value="11:00">11:00</option>
-                    <option value="11:30">11:30</option>
-                    <option value="12:00">12:00</option>
-                    <option value="12:30">12:30</option>
-                    <option value="13:00">13:00</option>
-                    <option value="13:30">13:30</option>
-                    <option value="14:00">14:00</option>
-                    <option value="14:30">14:30</option>
-                    <option value="15:00">15:00</option>
-                </select>
-                <label for="observacion">Motivo de la cita</label>
-                <textarea id="observacion" name="observaciones"rows="4" cols="50" placeholder="Explica brevemente el problema de tu motocicleta..." required></textarea>
-                <button type="submit">Pedir cita</button>
-            </form>
+
+            <!-- Visualizar citas -->
+            <div id = "ver-citas">
+                <h2>Citas previstas</h2>
+                <table>
+                    <tr class="headerTabla">
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Motivo</th>
+                    </tr>
+                    <?php
+                        foreach ($citas as $cita) {
+                            echo "<tr>";
+                                echo "<td>" . htmlspecialchars($cita['fecha']) . "</td>";
+                                echo "<td>" . htmlspecialchars($cita['hora']) . "</td>";
+                                echo "<td>" . htmlspecialchars($cita['observaciones']) . "</td>";
+                            echo "</tr>";
+                        }
+                    ?>    
+                </table>
+            </div>
+
+            <!-- pedir cita -->
+            <div id = "pedir-cita">
+                <h2>Pedir Cita</h2>
+                <p>Programa una cita para el mantenimiento o revisión de tu motocicleta.</p>
+                <form id="registro-citas" action="pedirCita.php" method="POST">
+                    <label for="fecha">Selecciona una fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                    <br><br>
+                    <label for="horas">Hora de la cita</label>
+                    <select name="horas" id="horas" required>
+                        <option value="8:00">8:00</option>
+                        <option value="8:30">8:30</option>
+                        <option value="9:00">9:00</option>
+                        <option value="9:30">9:30</option>
+                        <option value="10:00">10:00</option>
+                        <option value="10:30">10:30</option>
+                        <option value="11:00">11:00</option>
+                        <option value="11:30">11:30</option>
+                        <option value="12:00">12:00</option>
+                        <option value="12:30">12:30</option>
+                        <option value="13:00">13:00</option>
+                        <option value="13:30">13:30</option>
+                        <option value="14:00">14:00</option>
+                        <option value="14:30">14:30</option>
+                        <option value="15:00">15:00</option>
+                    </select>
+                    <label for="observacion">Motivo de la cita</label>
+                    <textarea id="observacion" name="observaciones"rows="4" cols="50" placeholder="Explica brevemente el problema de tu motocicleta..." required></textarea>
+                    <button type="submit">Pedir cita</button>
+                </form>
+            </div>
         </section>
     </div>
 </body>

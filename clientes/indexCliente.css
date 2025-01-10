@@ -11,7 +11,7 @@ section {
     margin-bottom: 20px;
 }
 
-/* Estilos de la tabla en la sección "estado de la motocicleta" */
+/* Estilos de las tablas */
 table {
     width: 100%; /* Hacer la tabla responsive */
     max-width: 600px;
@@ -28,6 +28,15 @@ td, th {
     border: 1px solid #740303;
 }
 
+.headerTabla{
+    background-image: url(../img/fondorojo.jpg);
+    color: white;
+    font-size: 18px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+}
+td:first-child{
+    width :20%;
+}
 /* Estilos generales para el formulario */
 form {
     max-width: 600px;

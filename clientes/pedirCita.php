@@ -18,7 +18,7 @@
         // Insertar datos en la base de datos
         $result = $collection->insertOne([
             'cliente' => $nombre,
-            'dia' => $fecha,
+            'fecha' => $fecha,
             'hora' => $hora, 
             'observaciones' => $observacion,
         ]);
