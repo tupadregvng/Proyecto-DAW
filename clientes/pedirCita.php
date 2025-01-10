@@ -12,11 +12,12 @@
     try {
         // Conectar a MongoDB
         $client = new MongoDB\Client("mongodb://localhost:27017");
+        $collection = $client->gestor->citas; 
         
-        $collection = $client->clientes->citas; 
-        
+        $nombre = $_SESSION['name'];
         // Insertar datos en la base de datos
         $result = $collection->insertOne([
+            'cliente' => $nombre,
             'dia' => $fecha,
             'hora' => $hora, 
             'observaciones' => $observacion,

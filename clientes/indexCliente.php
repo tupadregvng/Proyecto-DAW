@@ -1,36 +1,6 @@
 <?php
-   
-
     session_start(); // Iniciar sesión
     $nombre = $_SESSION['name'];
-
-    /* // Supongamos que ya tienes el email o el _id del usuario después de un login
-    $email = $_SESSION['email']; // o podrías usar $_SESSION['user_id'] si lo tienes almacenado
-
-    try {
-        // Conectar a MongoDB
-        $client = new MongoDB\Client("mongodb://localhost:27017");
-        
-        // Acceder a la base de datos 'registro' y la colección 'usuarios'
-        $collection = $client->registro->usuarios;
-        
-        // Buscar al usuario por su correo electrónico (o por _id)
-        $user = $collection->findOne(['email' => $email]);
-
-        // Verificar si se encontró el usuario y obtener el nombre
-        if ($user) {
-            // Recoger el valor del campo 'name' de la respuesta
-            $nombre = $user['name'];  // Suponiendo que 'name' es el campo que contiene el nombre del usuario
-            
-            // Almacenar el nombre del usuario en la sesión (si es necesario)
-            $_SESSION['name'] = $nombre;
-        } else {
-            echo "Usuario no encontrado.";
-        }
-    } catch (Exception $e) {
-        // Manejo de errores
-        echo "Error al conectar con la base de datos: " . $e->getMessage();
-    } */
 ?>
 <!DOCTYPE html>
 <html lang="en">

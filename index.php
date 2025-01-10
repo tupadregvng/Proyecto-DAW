@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   try {
     // Conectar a MongoDB
     $client = new MongoDB\Client("mongodb://localhost:27017");
-    $collection = $client->registro->usuarios; // Acceder a la colección 'usuarios' en la base de datos 'registro'
+    $collection = $client->gestor->usuarios; // Acceder a la colección 'usuarios' en la base de datos 'gestor'
 
     // Buscar al usuario por correo electrónico
     $user = $collection->findOne(['email' => $email]);

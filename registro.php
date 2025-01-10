@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         // Conectar a MongoDB
         $client = new MongoDB\Client("mongodb://localhost:27017");
-        $collection = $client->registro->usuarios; // Base de datos, carpeta 'registro', colección 'usuarios'
+        $collection = $client->gestor->usuarios; // Base de datos, carpeta 'gestor', colección 'usuarios'
 
         // Insertar datos en la base de datos
         $result = $collection->insertOne([
