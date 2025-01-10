@@ -27,6 +27,7 @@
             <h2>Clientes</h2>
             <p>Aquí podrás gestionar todos los clientes registrados en el sistema.</p>
             <button onclick="window.location.href='nuevoCliente.php';">Añadir nuevo cliente</button>
+            <button onclick="window.location.href='gestionarCliente.php';">Ver y Gestionar Clientes</button>
         </section>
 
         <section id="proveedores">

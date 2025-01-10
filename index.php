@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       }
     } else {
       $error = "Correo o contraseña inválidos.";
-      echo($error);
+      echo ($error);
     }
   } catch (Exception $e) {
     $error = "Error al conectar con la base de datos: " . $e->getMessage();
