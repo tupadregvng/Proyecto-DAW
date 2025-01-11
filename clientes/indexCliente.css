@@ -30,6 +30,10 @@ td, th {
     border: 1px solid #740303;
 }
 
+table tr:nth-child(n+2) {
+    font-family: Arial, sans-serif;
+}
+
 .headerTabla{
     background-image: url(../img/fondorojo.jpg);
     color: white;

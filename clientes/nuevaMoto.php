@@ -26,7 +26,7 @@
             echo"<h1>BIENVENIDO ".$nombre."</h1>"
             ?>
         </div>
-        <form action="indexCliente.php" method="post">
+        <form action="nuevaMoto.php" method="POST">
             <label for="marca">Marca:</label>
             <input type="text" id="marca" name="marca" required>
 
@@ -46,5 +46,37 @@
             <button type="submit">Guardar</button>
         </form>
     </div>
+    <?php
+        require '../vendor/autoload.php'; // Cargar librería de MongoDB
+        use MongoDB\Driver\Exception\Exception;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['marca']) && isset($_POST['modelo']) && isset($_POST['bastidor']) && isset($_POST['matricula']) && isset($_POST['notas'])) {
+            $marca = $_POST['marca'];
+            $modelo = $_POST['modelo'];
+            $bastidor = $_POST['bastidor'];
+            $matricula = $_POST['matricula'];
+            $notas = $_POST['notas'];
+
+            try {
+                // Conectar a MongoDB
+                $client = new MongoDB\Client("mongodb://localhost:27017");
+                $collection = $client->gestor->motos; 
+
+                $nombre = $_SESSION['name'];
+                // Insertar datos en la base de datos
+                $result = $collection->insertOne([
+                    'cliente' => $nombre,
+                    'marca' => $marca,
+                    'modelo' => $modelo, 
+                    'bastidor' => $bastidor,
+                    'matricula' => $matricula,
+                    'notas' => $notas,
+                    'estado'=> "En circulación",
+                ]);
+                header("Location: indexCliente.php?registro=exito");
+            } catch (Exception $e) {
+                $error = "Error al conectar con la base de datos: " . $e->getMessage();
+            }
+        }
+    ?>
 </body>
 </html>

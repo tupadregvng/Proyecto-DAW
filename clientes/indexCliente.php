@@ -11,9 +11,9 @@
     $collection = $client->gestor->citas;
     $citas = $collection->find(['cliente' => $nombre]);
 
-   /*  //Obtener datos de motocicleta
+    //Obtener datos de motocicleta
     $collection = $client->gestor->motos;
-    $datos = $collection->find(['cliente'=> $nombre]); */
+    $motos = $collection->find(['cliente'=> $nombre]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +50,15 @@
                     <th>Modelo</th>
                     <th>Estado</th>
                 </tr>
+                <?php
+                    foreach ($motos as $moto) {
+                        echo "<tr>";
+                            echo "<td>" . htmlspecialchars($moto['marca']) . "</td>";
+                            echo "<td>" . htmlspecialchars($moto['modelo']) . "</td>";
+                            echo "<td>" . htmlspecialchars($moto['estado']) . "</td>";
+                        echo "</tr>";
+                    }
+                ?> 
             </table>
             <button onclick="window.location.href='nuevaMoto.php'">Añadir nueva motocicleta</button>    
         </section>

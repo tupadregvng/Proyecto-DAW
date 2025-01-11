@@ -1,3 +1,6 @@
+/* Importar estilos */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
 /* Estilo general del body y layout */
 body {
     display: flex;
@@ -28,6 +31,7 @@ label {
     font-weight: bold;
     margin-bottom: 10px;
     display: block;
+    font-family: "Audiowide", serif;
 }
 
 /* Estilo para el área de texto (textarea) */
