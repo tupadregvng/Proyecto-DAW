@@ -6,10 +6,14 @@
     require '../vendor/autoload.php'; // Cargar librería de MongoDB
     use MongoDB\Driver\Exception\Exception;
     $client = new MongoDB\Client("mongodb://localhost:27017");
-    $collection = $client->gestor->citas;
 
     // Obtener citas de la base de datos
+    $collection = $client->gestor->citas;
     $citas = $collection->find(['cliente' => $nombre]);
+
+   /*  //Obtener datos de motocicleta
+    $collection = $client->gestor->motos;
+    $datos = $collection->find(['cliente'=> $nombre]); */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +28,7 @@
 <body>
     <!-- Menú lateral -->
     <div class="sidebar">
-        <a href="#estado-motocicleta">ESTADO DE MOTOCICLETA</a>
+        <a href="#misMoto">ESTADO DE MOTOCICLETA</a>
         <a href="#cita">CITAS</a>
         <a href="#pedir-cita">PEDIR CITA</a>
         <a href="../tiendaWeb.html">REALIZAR COMPRAS</a>
@@ -37,9 +41,9 @@
             ?>
         </div>
         <!-- sección para la visualización del estado de la motocicleta -->
-        <section id="estado-motocicleta">
-            <h2>Estado de Motocicleta</h2>
-            <p>Consulta aquí el estado de tu motocicleta.</p>
+        <section id="misMoto">
+            <h2>Mis motocicletas</h2>
+            <p>Consulta aquí tus motociclestas y su estado.</p>
             <table>
                 <tr class="headerTabla">
                     <th>Marca</th>
@@ -47,7 +51,9 @@
                     <th>Estado</th>
                 </tr>
             </table>
+            <button onclick="window.location.href='nuevaMoto.php'">Añadir nueva motocicleta</button>    
         </section>
+        
 
         <!-- citas -->
         <section id="cita">

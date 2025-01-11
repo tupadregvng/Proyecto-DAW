@@ -1,3 +1,5 @@
+/* Importar estilos */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 /* Estilo general del body y layout */
 body {
     display: flex;
@@ -31,6 +33,7 @@ td, th {
 .headerTabla{
     background-image: url(../img/fondorojo.jpg);
     color: white;
+    font-family: "Audiowide", serif;
     font-size: 18px; /* Tamaño de fuente */
     font-weight: bold; /* Negrita */
 }
@@ -53,6 +56,7 @@ label {
     font-weight: bold;
     margin-bottom: 10px;
     display: block;
+    font-family: "Audiowide", serif;
 }
 
 /* Estilo del selector de horas */
@@ -72,4 +76,10 @@ textarea {
     resize: vertical;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
+}
+
+/* Centrar botón */
+#misMoto button {
+    display: block;
+    margin: 20px auto;
 }
