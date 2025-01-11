@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilosGenerales.css">
+    <link rel="stylesheet" href="../estilosGenerales.css">
     <link rel="stylesheet" href="nuevoProveedorCliente.css">
     <title>Formulario de cliente</title>
 </head>
 <body>
     <div class="sidebar">
-        <a href="#clientes">Clientes</a>
-        <a href="#proveedores">Proveedores</a>
-        <a href="#stock">Stock</a>
-        <a href="#citas">Citas</a>
+        <a href="indexAdmin.php#clientes">Clientes</a>
+        <a href="indexAdmin.php#proveedores">Proveedores</a>
+        <a href="indexAdmin.php#citas">Citas</a>
+        <a href="indexAdmin.php#stock">Stock</a>
     </div>
     <div class="main-content">
         <div class="header">

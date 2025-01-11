@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilosGenerales.css">
+    <link rel="stylesheet" href="../estilosGenerales.css">
     <link rel="stylesheet" href="indexAdmin.css">
     <title>Panel de administradores</title>
 </head>
@@ -14,8 +14,9 @@
     <div class="sidebar">
         <a href="#clientes">Clientes</a>
         <a href="#proveedores">Proveedores</a>
-        <a href="#stock">Stock</a>
         <a href="#citas">Citas</a>
+        <a href="#stock">Stock</a>
+    
     </div>
 
     <!-- Contenido Principal -->
@@ -36,16 +37,16 @@
             <button onclick="window.location.href='nuevoProveedor.php';">Añadir nuevo proveedor</button>
         </section>
 
-        <section id="stock">
-            <h2>Stock</h2>
-            <p>Aquí podrás ver y administrar el inventario de productos o piezas disponibles.</p>
-            <button onclick="window.location.href='nuevoRecambio.php';">Añadir nuevo recambio</button>
-        </section>
-
         <section id="citas">
             <h2>Citas</h2>
             <p>Aquí podrás gestionar las citas de los clientes y las reparaciones pendientes.</p>
             <button onclick="window.location.href='citas.php';">Gestionar citas</button>
+        </section>
+
+        <section id="stock">
+            <h2>Stock</h2>
+            <p>Aquí podrás ver y administrar el inventario de productos o piezas disponibles.</p>
+            <button onclick="window.location.href='nuevoRecambio.php';">Añadir nuevo recambio</button>
         </section>
     </div>
 </body>

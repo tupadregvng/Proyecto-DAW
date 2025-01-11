@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: clientes/indexCliente.php');
         exit();
       }else{
-        header('Location: indexAdmin.php');
+        header('Location: admin/indexAdmin.php');
         exit();
       }
     } else {
