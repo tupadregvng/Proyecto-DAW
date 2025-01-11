@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 
 // Cliente MongoDB
 $mongoClient = new MongoDB\Client("mongodb://localhost:27017");
-$database = $mongoClient->registro; // Nombre de la base de datos
+$database = $mongoClient->gestor; // Nombre de la base de datos
 $collection = $database->usuarios; // Nombre de la colección
 
 // Maneja los formularios (POST para actualizar, GET para eliminar)
