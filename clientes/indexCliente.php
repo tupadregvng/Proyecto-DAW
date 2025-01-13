@@ -49,6 +49,7 @@
                     <th>Marca</th>
                     <th>Modelo</th>
                     <th>Estado</th>
+                    <th></th>
                 </tr>
                 <?php
                     foreach ($motos as $moto) {
@@ -56,6 +57,9 @@
                             echo "<td>" . htmlspecialchars($moto['marca']) . "</td>";
                             echo "<td>" . htmlspecialchars($moto['modelo']) . "</td>";
                             echo "<td>" . htmlspecialchars($moto['estado']) . "</td>";
+                            echo "<td>
+                                <button onclick=\"window.location.href='gestionMotos.php'\">Editar</button>
+                            </td>";
                         echo "</tr>";
                     }
                 ?> 
