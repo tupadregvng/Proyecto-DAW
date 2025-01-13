@@ -14,9 +14,9 @@
 <body>
     <!-- Menú lateral -->
     <div class="sidebar">
-        <a href="#misMoto">ESTADO DE MOTOCICLETA</a>
-        <a href="#cita">CITAS</a>
-        <a href="#pedir-cita">PEDIR CITA</a>
+        <a href="indexCliente.php#misMoto">ESTADO DE MOTOCICLETA</a>
+        <a href="indexCliente.php#cita">CITAS</a>
+        <a href="indexCliente.php#pedir-cita">PEDIR CITA</a>
         <a href="../tiendaWeb.html">REALIZAR COMPRAS</a>
     </div>
     <div class="main-content">
