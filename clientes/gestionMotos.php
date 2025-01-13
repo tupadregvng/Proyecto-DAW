@@ -1,4 +1,7 @@
 <?php
+session_start(); // Iniciar sesión
+$nombre = $_SESSION['name'];
+
 // Requiere MongoDB
 require '../vendor/autoload.php';
 
@@ -11,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Se obtiene el ID a actualizar
     $id = $_POST['id'];
 
-    // Datos de actualización del usuario
+    // Datos de actualización
     $updateData = [
         'marca' => $_POST['marca'], 
         'modelo' => $_POST['modelo'], 
@@ -32,10 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: ' . $_SERVER['PHP_SELF']);
     exit;
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
-    // ID del usuario a eliminar
+    // ID a eliminar
     $id = $_GET['id'];
 
-    // Elimina el usuario por su _id
+    // Elimina el objeto por su _id
     $collection->deleteOne(['_id' => new MongoDB\BSON\ObjectId($id)]);
 
     // Redirige a la misma página después de la eliminación
@@ -43,8 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-// Obtener todos los usuarios para mostrarlos en la tabla
-$motos = $collection->find();
+// Obtener todos los objetos para mostrarlos en la tabla
+$motos = $collection->find(['cliente'=> $nombre]);
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +58,7 @@ $motos = $collection->find();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionar Clientes</title>
     <link rel="stylesheet" href="../estilosGenerales.css">
-    <link rel="stylesheet" href="gestionMotos.css">
+    <link rel="stylesheet" href="gestion.css">
 </head>
 
 <body>
@@ -80,10 +83,9 @@ $motos = $collection->find();
                 </tr>
             </thead>
             <tbody>
-                <!-- Itera sobre todos los usuarios -->
                 <?php foreach ($motos as $moto): ?>
                     <tr>
-                        <!-- Formulario para editar el usuario -->
+                        <!-- Formulario para editar la moto -->
                         <form method="POST">
                             <!-- Campo para editar la marca -->
                             <td><input type="marca" name="marca" value="<?= htmlspecialchars($moto['marca']) ?>"></td>
@@ -113,7 +115,7 @@ $motos = $collection->find();
                             <!-- Campo oculto para pasar el _id de la moto para eliminarla, esto permite trabajar con mas cosas que no sean inputs, como en este caso botones -->
                             <input type="hidden" name="id" value="<?= htmlspecialchars($moto['_id']) ?>">
 
-                            <!-- Botón para eliminar al usuario -->
+                            <!-- Botón para eliminar -->
                             <button type="submit">Eliminar</button>
                         </form>
                         </td>

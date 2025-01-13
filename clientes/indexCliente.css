@@ -87,3 +87,9 @@ textarea {
     display: block;
     margin: 20px auto;
 }
+
+/* Centrar botón */
+#ver-citas button {
+    display: block;
+    margin: 20px auto;
+}
