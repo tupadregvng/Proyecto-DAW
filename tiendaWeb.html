@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotosOliver</title>
+    <link rel="stylesheet" href="tiendaWeb.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="container">
+            <h1>Motos Oliver</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#motos">Motocicletas</a></li>
+                    <li><a href="#recambios">Recambios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección de inicio -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Bienvenido a  Motos Oliver</h2>
+            <p>Tu mejor opción para comprar motocicletas y recambios.</p>
+        </div>
+    </section>
+
+    <!-- Sección de motocicletas -->
+    <section id="motos" class="section">
+        <div class="container">
+            <h2>Motocicletas</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="moto1.jpg" alt="Moto 1">
+                    <h3>Modelo Sport 500</h3>
+                    <p>Una moto deportiva para los amantes de la velocidad. Precio: 7,000</p>
+                </div>
+                <div class="card">
+                    <img src="moto2.jpg" alt="Moto 2">
+                    <h3>Modelo Cruiser 300</h3>
+                    <p>Diseñada para largos recorridos con máximo confort. Precio: 5,500</p>
+                </div>
+                <div class="card">
+                    <img src="moto3.jpg" alt="Moto 3">
+                    <h3>Modelo Adventure 400</h3>
+                    <p>Perfecta para cualquier terreno. Precio: 6,200</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de recambios -->
+    <section id="recambios" class="section">
+        <div class="container">
+            <h2>Recambios</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="recambio1.jpg" alt="Recambio 1">
+                    <h3>Neumáticos</h3>
+                    <p>Neumáticos de alta calidad para todo tipo de motos. Precio desde 150</p>
+                </div>
+                <div class="card">
+                    <img src="recambio2.jpg" alt="Recambio 2">
+                    <h3>Baterías</h3>
+                    <p>Baterías duraderas y confiables. Precio desde 80</p>
+                </div>
+                <div class="card">
+                    <img src="recambio3.jpg" alt="Recambio 3">
+                    <h3>Frenos</h3>
+                    <p>Pastillas y discos de freno para máxima seguridad. Precio desde 50</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de contacto -->
+    <section id="contacto" class="section">
+        <div class="container">
+            <h2>Contacto</h2>
+            <form action="enviar_contacto.php" method="POST">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Mensaje</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <button type="submit" class="btn">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Motos Oliver. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

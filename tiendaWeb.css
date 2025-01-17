@@ -1,0 +1,137 @@
+/* General */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    color: #333;
+    font-family: "Audiowide", serif;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-family: "Audiowide", serif;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #740303;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: #bb1414;
+}
+
+/* Encabezado */
+header {
+    background-image: url(img/fondorojo.jpg);
+    color: white;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+    color: #740303;
+    text-shadow: 
+        -1px -1px 0 white,  /* Sombra hacia arriba a la izquierda */
+        1px -1px 0 white,   /* Sombra hacia arriba a la derecha */
+        -1px 1px 0 white,   /* Sombra hacia abajo a la izquierda */
+        1px 1px 0 white;    /* Sombra hacia abajo a la derecha */
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+/* Hero */
+.hero {
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 60px 0;
+}
+
+.hero h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Secciones */
+.section {
+    padding: 40px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.card h3 {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+/* Contacto */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form input, form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+form button {
+    width: fit-content;
+}
+
+/* Pie de página */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+}
