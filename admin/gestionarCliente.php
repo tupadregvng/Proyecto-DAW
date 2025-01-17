@@ -47,6 +47,7 @@
             // Fill form fields with row data
             document.getElementById('editId').value = row.dataset.id;
             document.getElementById('editNombre').value = row.querySelector('.nombre').innerText;
+            document.getElementById('editApellidos').value = row.querySelector('.apellidos').innerText;
             document.getElementById('editTelefono').value = row.querySelector('.telefono').innerText;
             document.getElementById('editEmail').value = row.querySelector('.email').innerText;
             document.getElementById('editDireccion').value = row.querySelector('.direccion').innerText;
@@ -75,6 +76,7 @@
                 ['_id' => new MongoDB\BSON\ObjectId($data['id'])],
                 ['$set' => [
                     'nombre' => $data['nombre'],
+                    'apellidos' => $data['apellidos'],
                     'telefono' => $data['telefono'],
                     'email' => $data['email'],
                     'direccion' => $data['direccion'],
@@ -112,6 +114,10 @@
                 <input type="text" name="nombre" id="editNombre" required>
             </div>
             <div>
+                <label for="editApellidos">Apellidos:</label>
+                <input type="text" name="apellidos" id="editApellidos" required>
+            </div>
+            <div>
                 <label for="editTelefono">Teléfono:</label>
                 <input type="text" name="telefono" id="editTelefono" required>
             </div>
@@ -134,11 +140,10 @@
     <table>
         <tr>
             <th>Nombre</th>
+            <th>Apellidos</th>
             <th>Teléfono</th>
             <th>Email</th>
             <th>Dirección</th>
-            <th>Notas</th>
-            <th>Fecha</th>
         </tr>
         <?php
         try {
@@ -149,6 +154,7 @@
             foreach ($result as $entry) {
                 echo "<tr onclick='openModal(this)' data-id='" . htmlspecialchars($entry->_id) . "'>";
                 echo "<td class='nombre'>" . htmlspecialchars($entry->nombre) . "</td>";
+                echo "<td class='apellidos'>" . htmlspecialchars($entry->apellidos) . "</td>";
                 echo "<td class='telefono'>" . htmlspecialchars($entry->telefono) . "</td>";
                 echo "<td class='email'>" . htmlspecialchars($entry->email) . "</td>";
                 echo "<td class='direccion'>" . htmlspecialchars($entry->direccion) . "</td>";
