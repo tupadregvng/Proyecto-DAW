@@ -58,7 +58,6 @@ $motos = $collection->find(['cliente'=> $nombre]);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionar Clientes</title>
     <link rel="stylesheet" href="../estilosGenerales.css">
-    <link rel="stylesheet" href="gestion.css">
     <script src="funciones.js" defer></script>
 </head>
 

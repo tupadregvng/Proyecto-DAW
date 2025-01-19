@@ -1,5 +1,4 @@
-/* Importar estilos */
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
 /* Estilo general del body y layout */
 body {
     display: flex;
@@ -13,37 +12,6 @@ section {
     margin-bottom: 20px;
 }
 
-/* Estilos de las tablas */
-table {
-    width: 100%; /* Hacer la tabla responsive */
-    max-width: 600px;
-    border-spacing: 0;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid black;
-    margin: 0 auto; /* Centrar la tabla */
-}
-
-td, th {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid black;
-}
-
-table tr:nth-child(n+2) {
-    font-family: Arial, sans-serif;
-}
-
-.headerTabla{
-    background-image: url(../img/fondorojo.jpg);
-    color: white;
-    font-family: "Audiowide", serif;
-    font-size: 18px; /* Tamaño de fuente */
-    font-weight: bold; /* Negrita */
-}
-td:first-child{
-    width :20%;
-}
 /* Estilos generales para el formulario */
 form {
     max-width: 600px;
@@ -82,10 +50,11 @@ textarea {
     transition: border-color 0.3s ease;
 }
 
-/* Centrar botón */
-#misMoto button {
-    display: block;
-    margin: 20px auto;
+#secBotones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
 }
 
 /* Centrar botón */

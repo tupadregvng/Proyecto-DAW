@@ -21,7 +21,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilosGenerales.css">
-    <link rel="stylesheet" href="indexCliente.css">
+    <link rel="stylesheet" href="cliente.css">
     <script src="registroExito.js"></script>
     <title>Cliente</title>
 </head>
@@ -67,8 +67,10 @@
                     }
                 ?> 
             </table>
-            <button onclick="window.location.href='gestionMotos.php'">Editar</button>
-            <button onclick="window.location.href='nuevaMoto.php'">Añadir nueva motocicleta</button>    
+            <div id = "secBotones">
+                <button onclick="window.location.href='gestionMotos.php'">Editar</button>
+                <button onclick="window.location.href='nuevaMoto.php'">Añadir nueva motocicleta</button>  
+            </div>  
         </section>
         
 
