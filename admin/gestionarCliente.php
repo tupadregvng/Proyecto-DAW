@@ -80,7 +80,6 @@
                     'telefono' => $data['telefono'],
                     'email' => $data['email'],
                     'direccion' => $data['direccion'],
-                    'notas' => $data['notas']
                 ]]
             );
 
