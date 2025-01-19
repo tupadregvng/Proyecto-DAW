@@ -28,11 +28,18 @@
 <body>
     <!-- Menú lateral -->
     <div class="sidebar">
-        <a href="#misMoto">ESTADO DE MOTOCICLETA</a>
-        <a href="#cita">CITAS</a>
-        <a href="#pedir-cita">PEDIR CITA</a>
-        <a href="../tiendaWeb.html">REALIZAR COMPRAS</a>
+        <div>
+            <a href="#misMoto">ESTADO DE MOTOCICLETA</a>
+            <a href="#cita">CITAS</a>
+            <a href="#pedir-cita">PEDIR CITA</a>
+            <a href="../tiendaWeb.html">REALIZAR COMPRAS</a>
+        </div>
+        <!-- botón cerrar sesión -->
+        <div class="cerrar">
+            <a href="../index.php">Cerrar sessión</a>
+        </div>
     </div>
+    
     <div class="main-content">
         <!-- Título superior -->
         <div class="header">

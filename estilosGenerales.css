@@ -64,6 +64,8 @@ p{
     padding-top: 80px;
     box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
     overflow-y: auto; /* Permitir scroll si el contenido es demasiado alto */
+    display:flex;
+    flex-direction: column;
 }
 
 .sidebar a {
@@ -82,6 +84,13 @@ p{
 .sidebar a:hover {
     background-color: #bb1414;
     opacity: 1;
+}
+
+/* Botón cerrar sesión */
+.cerrar {
+    margin-top: auto; /* Empuja este div al final */
+    text-align: center;
+    padding: 10px;
 }
 
 /* Estilo del botón */
