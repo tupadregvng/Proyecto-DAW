@@ -35,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     // ID a eliminar
     $id = $_GET['id'];
-
-    // Elimina el objeto por su _id
+    
+    // Elimina el objeto por su _id si se ha confirmado la ventana emergente
     $collection->deleteOne(['_id' => new MongoDB\BSON\ObjectId($id)]);
 
     // Redirige a la misma página después de la eliminación
@@ -57,6 +57,7 @@ $citas = $collection->find(['cliente'=> $nombre]);
     <title>Gestionar Clientes</title>
     <link rel="stylesheet" href="../estilosGenerales.css">
     <link rel="stylesheet" href="gestion.css">
+    <script src="funciones.js" defer></script>
 </head>
 
 <body>
@@ -124,7 +125,7 @@ $citas = $collection->find(['cliente'=> $nombre]);
                             <input type="hidden" name="id" value="<?= htmlspecialchars($cita['_id']) ?>">
 
                             <!-- Botón para eliminar -->
-                            <button type="submit">Eliminar</button>
+                            <button type="button" onclick="confirmarEliminar()">Eliminar</button>
                         </form>
                         </td>
                     </tr>

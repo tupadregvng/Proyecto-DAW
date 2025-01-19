@@ -59,6 +59,7 @@ $motos = $collection->find(['cliente'=> $nombre]);
     <title>Gestionar Clientes</title>
     <link rel="stylesheet" href="../estilosGenerales.css">
     <link rel="stylesheet" href="gestion.css">
+    <script src="funciones.js" defer></script>
 </head>
 
 <body>
@@ -116,7 +117,7 @@ $motos = $collection->find(['cliente'=> $nombre]);
                             <input type="hidden" name="id" value="<?= htmlspecialchars($moto['_id']) ?>">
 
                             <!-- Botón para eliminar -->
-                            <button type="submit">Eliminar</button>
+                            <button type="button" onclick="confirmarEliminar()">Eliminar</button>
                         </form>
                         </td>
                     </tr>
