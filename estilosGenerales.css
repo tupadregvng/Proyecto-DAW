@@ -111,3 +111,34 @@ button {
 button:hover {
     background-color: #bb1414;
 }
+/* Estilos de las tablas */
+table {
+    width: 100%; /* Hacer la tabla responsive */
+    max-width: 600px;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid black;
+    margin: 0 auto; /* Centrar la tabla */
+}
+
+td, th {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+table tr:nth-child(n+2) {
+    font-family: Arial, sans-serif;
+}
+
+td:first-child{
+    width :20%;
+}
+.headerTabla{
+    background-image: url(img/fondorojo.jpg);
+    color: white;
+    font-family: "Audiowide", serif;
+    font-size: 18px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+}

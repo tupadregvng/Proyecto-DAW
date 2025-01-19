@@ -74,7 +74,7 @@ $usuarios = $collection->find();
         <h1>Lista de Usuarios</h1>
         <table>
             <thead>
-                <tr>
+                <tr class= "headerTabla">
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Email</th>

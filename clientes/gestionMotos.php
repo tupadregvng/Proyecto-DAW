@@ -71,15 +71,17 @@ $motos = $collection->find(['cliente'=> $nombre]);
     </div>
 
     <div class="main-content">
-        <h1>Mis motocicletas</h1>
+        <div class="header">
+            <h1>Mis motocicletas</h1>
+        </div>
         <table>
-            <thead>
-                <tr class="headerTabla">
+            <thead class="headerTabla">
+                <tr>
                     <th>Marca</th>
                     <th>Modelo</th>
-                    <th>bastidor</th>
+                    <th>Bastidor</th>
                     <th>Matricula</th>
-                    <th>notas</th>
+                    <th>Notas</th>
                     <th>Acciones</th>
                 </tr>
             </thead>

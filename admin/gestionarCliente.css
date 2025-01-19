@@ -1,3 +1,5 @@
+/* Importar estilos */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 /* Aplicar box-sizing global para evitar problemas de cálculo de ancho y padding */
 * {
     box-sizing: border-box;
@@ -28,6 +30,18 @@ table th {
 
 table tr:nth-child(even) {
     background-color: #f4f4f4;
+}
+
+table tr:nth-child(n+2) {
+    font-family: Arial, sans-serif;
+}
+
+.headerTabla{
+    background-image: url(../img/fondorojo.jpg);
+    color: white;
+    font-family: "Audiowide", serif;
+    font-size: 18px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
 }
 
 /* Estilo de los botones */

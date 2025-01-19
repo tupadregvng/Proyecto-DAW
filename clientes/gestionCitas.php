@@ -56,7 +56,6 @@ $citas = $collection->find(['cliente'=> $nombre]);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionar Clientes</title>
     <link rel="stylesheet" href="../estilosGenerales.css">
-    <link rel="stylesheet" href="gestion.css">
     <script src="funciones.js" defer></script>
 </head>
 
@@ -69,10 +68,12 @@ $citas = $collection->find(['cliente'=> $nombre]);
     </div>
 
     <div class="main-content">
-        <h1>Citas previstas</h1>
+        <div class="header">
+            <h1>Citas previstas</h1>
+        </div>
         <table>
-            <thead>
-                <tr class="headerTabla">
+            <thead class ="headerTabla">
+                <tr>
                     <th>Fecha</th>
                     <th>Hora</th>
                     <th>Motivo</th>
@@ -109,7 +110,7 @@ $citas = $collection->find(['cliente'=> $nombre]);
                             </td>
 
                             <!-- Campo para cambiar el motivo -->
-                            <td><input type="observaciones" name="observaciones" value="<?= htmlspecialchars($cita['observaciones']) ?>"></td>
+                            <td><input  class= "motivo" type="observaciones" name="observaciones" value="<?= htmlspecialchars($cita['observaciones']) ?>"></td>
                             <td>
                                 <!-- Campo oculto para pasar el _id -->
                                 <input type="hidden" name="id" value="<?= htmlspecialchars($cita['_id']) ?>">
