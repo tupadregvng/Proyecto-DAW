@@ -68,6 +68,7 @@ body{
   border-radius: 2px;
   font-weight: 600;
   animation: bounce2 1.6s;
+  margin: 20px 0 0 0;
 }
 .login input[type=submit] {
   background-color: #740303;  

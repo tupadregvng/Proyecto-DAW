@@ -1,23 +1,30 @@
+<?php
+    session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
-<div class="login">
-  <form  class= "form" action = "index.php" method = "POST">
-    <input type="text" name="email" id="email" placeholder="Email" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" />
-    <input type="password" name="password" id="password" placeholder="Contraseña" />
-    <input type="submit" value="Log in" class="btnLogin"/>
-  </form>
-  <form action="registro.php" method="get">
-    <input type="submit" value="Regístrate" class="btnRegistro"/>
-  </form>
-
-</div>
-
+<body>
+  <div class="login">
+    <form  class= "form" action = "index.php" method = "POST">
+      <input type="text" name="email" id="email" placeholder="Email" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" />
+      <input type="password" name="password" id="password" placeholder="Contraseña" />
+      <input type="submit" value="Log in" class="btnLogin"/>
+    </form>
+    <form action="registro.php" method="get">
+      <input type="submit" value="Regístrate" class="btnRegistro"/>
+    </form>
+  </div>
+</body>
+</html>
 <?php
 require 'vendor/autoload.php'; // Cargar librería de MongoDB
 use MongoDB\Driver\Exception\Exception;
-
-session_start(); // Iniciar sesión para almacenar información del usuario
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Capturar datos del formulario
