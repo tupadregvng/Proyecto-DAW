@@ -1,6 +1,5 @@
 <?php
-    session_start(); // Iniciar sesión
-    $nombre = $_SESSION['name'];
+    require("../comprobarLogin.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

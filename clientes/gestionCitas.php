@@ -1,6 +1,5 @@
 <?php
-session_start(); // Iniciar sesión
-$nombre = $_SESSION['name'];
+require("../comprobarLogin.php");
 
 // Requiere MongoDB
 require '../vendor/autoload.php';
