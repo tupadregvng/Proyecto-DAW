@@ -1,14 +1,14 @@
 <head>
   <link rel="stylesheet" type="text/css" href="index.css">
 </head>
-<div class="login wrap">
-  <form action = "index.php" method = "POST">
+<div class="login">
+  <form  class= "form" action = "index.php" method = "POST">
     <input type="text" name="email" id="email" placeholder="Email" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" />
     <input type="password" name="password" id="password" placeholder="Contraseña" />
-    <input type="submit" value="Log in" />
+    <input type="submit" value="Log in" class="btnLogin"/>
   </form>
   <form action="registro.php" method="get">
-    <input type="submit" value="Regístrate" />
+    <input type="submit" value="Regístrate" class="btnRegistro"/>
   </form>
 
 </div>
