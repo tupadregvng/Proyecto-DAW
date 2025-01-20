@@ -85,6 +85,7 @@
                         <th>Fecha</th>
                         <th>Hora</th>
                         <th>Motivo</th>
+                        <th>Estado</th>
                     </tr>
                     <?php
                         foreach ($citas as $cita) {
@@ -92,6 +93,7 @@
                                 echo "<td>" . htmlspecialchars($cita['fecha']) . "</td>";
                                 echo "<td>" . htmlspecialchars($cita['hora']) . "</td>";
                                 echo "<td>" . htmlspecialchars($cita['observaciones']) . "</td>";
+                                echo "<td>" . htmlspecialchars($cita['estado']) . "</td>";
                             echo "</tr>";
                         }
                     ?>    

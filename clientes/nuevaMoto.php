@@ -18,6 +18,11 @@
         <a href="indexCliente.php#cita">CITAS</a>
         <a href="indexCliente.php#pedir-cita">PEDIR CITA</a>
         <a href="../tiendaWeb.html">REALIZAR COMPRAS</a>
+
+        <!-- botón cerrar sesión -->
+        <div class="cerrar">
+            <a href="../index.php">Cerrar sessión</a>
+        </div>
     </div>
     <div class="main-content">
         <!-- Título superior -->

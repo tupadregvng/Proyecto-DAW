@@ -21,6 +21,7 @@
             'fecha' => $fecha,
             'hora' => $hora, 
             'observaciones' => $observacion,
+            'estado' => "Pendiente",
         ]);
         header("Location: indexCliente.php?registro=exito");
     } catch (Exception $e) {
