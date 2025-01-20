@@ -1,10 +1,5 @@
 <?php
-    session_start(); // Iniciar sesión
-    $nombre = $_SESSION['name'];
-    $role = $_SESSION['role'];
-    if(!isset($nombre) || $role !== 1){
-        echo "<script>alert('No tienes acceso a esta página.'); window.location.href = '../index.php';</script>";
-    }
+    require("../comprobarAdmin.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -78,8 +73,6 @@
 <?php
 require '../vendor/autoload.php'; // Cargar librería de MongoDB
 use MongoDB\Driver\Exception\Exception;
-
-session_start(); // Asegurar que la sesión esté iniciada
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Capturar datos del formulario
