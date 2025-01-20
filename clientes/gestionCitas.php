@@ -10,6 +10,7 @@ $collection = $client->gestor->citas;
 
 // Maneja los formularios (POST para actualizar, GET para eliminar)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
     // Se obtiene el ID a actualizar
     $id = $_POST['id'];
 
@@ -28,9 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ['$set' => $updateData]
     );
 
-    // Redirige a la misma página para reflejar los cambios
-    header('Location: ' . $_SERVER['PHP_SELF']);
+    // Redirige a la misma página para reflejar los cambios y muestra mensaje de confirmación
+    echo "<script>
+        alert('Guardado con éxito');
+        window.location.href = window.location.href;
+    </script>";
     exit;
+    
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     // ID a eliminar
     $id = $_GET['id'];
@@ -90,7 +95,7 @@ $citas = $collection->find(['cliente'=> $nombre]);
                         <!-- Formulario para editar la cita -->
                         <form method="POST">
                             <!-- Campo para editar la fecha -->
-                            <td><input type="fecha" name="fecha" value="<?= htmlspecialchars($cita['fecha']) ?>"></td>
+                            <td><input type="date" name="fecha" value="<?= htmlspecialchars($cita['fecha']) ?>"></td>
 
                             <!-- Campo para editar la hora -->
                             <td>

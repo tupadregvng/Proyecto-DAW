@@ -30,8 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ['$set' => $updateData]
     );
 
-    // Redirige a la misma página para reflejar los cambios
-    header('Location: ' . $_SERVER['PHP_SELF']);
+    // Redirige a la misma página para reflejar los cambios y muestra mensaje de confirmación
+    echo "<script>
+        alert('Guardado con éxito');
+        window.location.href = window.location.href;
+    </script>";
     exit;
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     // ID a eliminar
