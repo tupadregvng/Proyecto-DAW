@@ -13,6 +13,7 @@ body{
   background-size: 105%; /* Incrementa el tamaño de la imagen al 150% para simular zoom */
   background-repeat: no-repeat; /* Evita que se repita */
   background-position: center; /* Mantiene el centro visible después del zoom */
+  background-attachment: fixed;
 }
 
 /* Estilos de la seccion del formulario */
@@ -34,7 +35,8 @@ body{
 
 /* estilos de inputs */
 .login input[type=text],
-.login input[type=password] {
+.login input[type=password],
+.login input[type=email] {
   opacity: 1;
   display: block;
   border: none;
@@ -49,7 +51,8 @@ body{
   -webkit-appearance: none;
 }
 
-.login input[type=password] {
+.login input[type=password],
+.login input[type=email] {
   animation: bounce1 1.3s;
 }
 
@@ -87,4 +90,16 @@ body{
 @keyframes bounce2 {
   0% {  opacity: 0; }
   70% { transform: translateY(-20px); opacity: 0;}
-}      
+}
+
+.login p {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+  color: white;
+}
+
+.login a {
+  color: #2ecc71;
+  text-decoration: none;
+}

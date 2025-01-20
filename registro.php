@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-    <link rel="stylesheet" type="text/css" href="registro.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
     <div class="login wrap">
@@ -13,7 +13,7 @@
             <input type="email" name="email" id="email" placeholder="Email" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" required />
             <input type="password" name="password" id="password" placeholder="Contraseña" required />
             <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirmar Contraseña" required />
-            <input type="submit" value="Registrarse" />
+            <input type="submit" value="Registrarse" class= "btnLogin"/>
         </form>
         <p>Ya tienes una cuenta? <a href="index.php">Login</a></p>
     </div>
