@@ -17,36 +17,37 @@
         </form>
         <p>Ya tienes una cuenta? <a href="index.php">Login</a></p>
     </div>
+
+<?php
+    require 'vendor/autoload.php'; // Cargar librería de MongoDB
+    use MongoDB\Driver\Exception\Exception;
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Capturar datos del formulario
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $role = 0; // Asignar rol de cliente (0)por defecto
+    
+        try {
+            // Conectar a MongoDB
+            $client = new MongoDB\Client("mongodb://localhost:27017");
+            $collection = $client->gestor->usuarios; // Base de datos, carpeta 'gestor', colección 'usuarios'
+        
+            // Insertar datos en la base de datos
+            $result = $collection->insertOne([
+                'name' => $name,
+                'email' => $email,
+                'password' => $password, // Contraseña sin encriptar por ahora
+                'role' => $role, // Rol de administrador
+                'name' => $name
+            ]);
+        
+            echo "<script>window.alert('Usuario registrado correctamente')</script>";
+        } catch (Exception $e) {
+            echo "Error al registrar el usuario: " . $e->getMessage();
+        }
+    }
+?>
 </body>
 </html>
-<?php
-require 'vendor/autoload.php'; // Cargar librería de MongoDB
-use MongoDB\Driver\Exception\Exception;
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Capturar datos del formulario
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $role = 0; // Asignar rol de cliente (0)por defecto
-
-    try {
-        // Conectar a MongoDB
-        $client = new MongoDB\Client("mongodb://localhost:27017");
-        $collection = $client->gestor->usuarios; // Base de datos, carpeta 'gestor', colección 'usuarios'
-
-        // Insertar datos en la base de datos
-        $result = $collection->insertOne([
-            'name' => $name,
-            'email' => $email,
-            'password' => $password, // Contraseña sin encriptar por ahora
-            'role' => $role, // Rol de administrador
-            'name' => $name
-        ]);
-
-        echo "Usuario registrado con ID: " . $result->getInsertedId();
-    } catch (Exception $e) {
-        echo "Error al registrar el usuario: " . $e->getMessage();
-    }
-}
-?>
