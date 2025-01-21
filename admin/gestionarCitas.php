@@ -44,7 +44,8 @@
                     'cliente' => $data['cliente'],
                     'fecha' => $data['fecha'],
                     'hora' => $data['hora'],
-                    'observaciones' => $data['observaciones']
+                    'observaciones' => $data['observaciones'],
+                    'estado' => $data['estado'],
                 ]]
             );
 
@@ -93,6 +94,14 @@
             </div>
 
             <div>
+                <label for="editEstado">Estado:</label>
+                <select name="estado" id="editEstado" required>
+                    <option value="Aceptado">Aceptado</option>
+                    <option value="Pendiente">Pendiente</option>
+                </select>
+            </div>
+
+            <div>
                 <button type="submit">Guardar</button>
                 <button type="button" onclick="closeModal()">Cancelar</button>
             </div>
@@ -105,6 +114,7 @@
             <th>Fecha</th>
             <th>Hora</th>
             <th>Observaciones</th>
+            <th>Estado</th>
         </tr>
         <?php
         try {
@@ -118,6 +128,7 @@
                 echo "<td class='fecha'>" . htmlspecialchars($entry->fecha) . "</td>";
                 echo "<td class='hora'>" . htmlspecialchars($entry->hora) . "</td>";
                 echo "<td class='observaciones'>" . htmlspecialchars($entry->observaciones) . "</td>";
+                echo "<td class='observaciones'>" . htmlspecialchars($entry->estado) . "</td>";
                 echo "</tr>";
             }
         } catch (Exception $e) {

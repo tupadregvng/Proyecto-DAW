@@ -87,6 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'fecha' => $fecha,
             'hora' => $hora,
             'observaciones' => $observacion,
+            'estado' => "Aceptada",
             'timestamp' => new MongoDB\BSON\UTCDateTime(new DateTime()) // Agregar timestamp de fecha de creación
         ]);
 
