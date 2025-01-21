@@ -22,6 +22,15 @@ form {
     border-radius: 8px;
 }
 
+/*Estilos de los inputs e interacciones del ususrio*/
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
 /* Estilos de los textos informativos del formulario */
 label {
     font-size: 1.2rem;
