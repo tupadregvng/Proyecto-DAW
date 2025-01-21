@@ -1,5 +1,10 @@
 <?php
+<<<<<<< HEAD
     require("../comprobarLogin.php");
+=======
+    session_start(); // Iniciar sesión
+    $nombre = $_SESSION['name'];
+>>>>>>> andres-tablas-js
 
     // Conectar a MongoDB
     require '../vendor/autoload.php'; // Cargar librería de MongoDB

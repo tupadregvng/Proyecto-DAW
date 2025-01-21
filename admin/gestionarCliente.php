@@ -1,137 +1,183 @@
 <?php
-// Requiere MongoDB
-require '../vendor/autoload.php';
-
-// Cliente MongoDB
-$mongoClient = new MongoDB\Client("mongodb://localhost:27017");
-$database = $mongoClient->gestor; // Nombre de la base de datos
-$collection = $database->usuarios; // Nombre de la colección
-
-// Maneja los formularios (POST para actualizar, GET para eliminar)
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Se obtiene el ID del usuario a actualizar
-    $id = $_POST['id'];
-
-    // Datos de actualización del usuario
-    $updateData = [
-        'name' => $_POST['name'], // Nombre actualizado
-        'email' => $_POST['email'], // Correo electrónico actualizado
-        'role' => (int) $_POST['role'] // Rol actualizado (0 o 1)
-    ];
-
-    // Si se proporciona una nueva contraseña, se actualiza
-    if (!empty($_POST['password'])) {
-        $updateData['password'] = $_POST['password']; // Contraseña nueva
-    }
-
-    // Actualiza el usuario en la base de datos usando su _id como identificador.
-    // Los métodos de coleccion de MongoDB funcionan pasando el valor que se quiere cambiar como objeto, aqui definimos un nuevo objeto BSON de MongoDB con el $id que hemos cogido antes
-    // Una vez hace un clave:valor _id:objeto, sabe que objeto es dentro de la coleccion y en este caso se pasa el parametro $set apuntando a $updateData para refleje en la BBDD los datos capturados en $updateData
-    $collection->updateOne(
-        ['_id' => new MongoDB\BSON\ObjectId($id)],
-        ['$set' => $updateData]
-    );
-
-    // Redirige a la misma página para reflejar los cambios
-    header('Location: ' . $_SERVER['PHP_SELF']);
-    exit;
-} elseif ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
-    // ID del usuario a eliminar
-    $id = $_GET['id'];
-
-    // Elimina el usuario por su _id
-    $collection->deleteOne(['_id' => new MongoDB\BSON\ObjectId($id)]);
-
-    // Redirige a la misma página después de la eliminación
-    header('Location: ' . $_SERVER['PHP_SELF']);
-    exit;
-}
-
-// Obtener todos los usuarios para mostrarlos en la tabla
-$usuarios = $collection->find();
+    require("../comprobarAdmin.php");
 ?>
-
 <!DOCTYPE html>
-<html lang="es">
-
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestionar Clientes</title>
     <link rel="stylesheet" href="../estilosGenerales.css">
-    <link rel="stylesheet" href="gestionarCliente.css">
-</head>
+    <link rel="stylesheet" href="gestionarUsuario.css">
+    <title>Gestionar Clientes</title>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
 
+        .modal.active {
+            display: block;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .modal-overlay.active {
+            display: block;
+        }
+    </style>
+    <script>
+        function openModal(row) {
+            const modal = document.getElementById('editModal');
+            const overlay = document.getElementById('modalOverlay');
+
+            // Fill form fields with row data
+            document.getElementById('editId').value = row.dataset.id;
+            document.getElementById('editNombre').value = row.querySelector('.nombre').innerText;
+            document.getElementById('editApellidos').value = row.querySelector('.apellidos').innerText;
+            document.getElementById('editTelefono').value = row.querySelector('.telefono').innerText;
+            document.getElementById('editEmail').value = row.querySelector('.email').innerText;
+            document.getElementById('editDireccion').value = row.querySelector('.direccion').innerText;
+
+            modal.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('editModal').classList.remove('active');
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+    </script>
+</head>
 <body>
     <div class="sidebar">
+        <a href="indexAdmin.php#usuarios">Usuarios</a>
         <a href="indexAdmin.php#clientes">Clientes</a>
         <a href="indexAdmin.php#proveedores">Proveedores</a>
         <a href="indexAdmin.php#citas">Citas</a>
-        <a href="indexAdmin.php#stock">Stock</a>
+        <a href="indexAdmin.php#vehiculos">Vehículos</a>
+    </div>
+    
+    <div class="main-content">
+        <div class="header">
+            <h1>Lista de clientes</h1>
+        </div>
+    <?php
+    require '../vendor/autoload.php';
+
+    function updateCliente($data) {
+        try {
+            $client = new MongoDB\Client("mongodb://localhost:27017");
+            $collection = $client->gestor->clientes;
+
+            $result = $collection->updateOne(
+                ['_id' => new MongoDB\BSON\ObjectId($data['id'])],
+                ['$set' => [
+                    'nombre' => $data['nombre'],
+                    'apellidos' => $data['apellidos'],
+                    'telefono' => $data['telefono'],
+                    'email' => $data['email'],
+                    'direccion' => $data['direccion'],
+                ]]
+            );
+
+            return [
+                'success' => $result->getModifiedCount() > 0,
+                'message' => $result->getModifiedCount() > 0 ? "Cliente actualizado con éxito." : "No se modificó ningún documento."
+            ];
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
+    }
+
+    $message = '';
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $result = updateCliente($_POST);
+        $message = $result['message'];
+    }
+    ?>
+
+    <?php if ($message): ?>
+        <p style="color: <?= $result['success'] ? 'green' : 'red' ?>;"><?= htmlspecialchars($message) ?></p>
+    <?php endif; ?>
+
+    <div id="modalOverlay" class="modal-overlay" onclick="closeModal()"></div>
+
+    <div id="editModal" class="modal">
+        <form method="POST">
+            <input type="hidden" name="id" id="editId">
+            <div>
+                <label for="editNombre">Nombre:</label>
+                <input type="text" name="nombre" id="editNombre" required>
+            </div>
+            <div>
+                <label for="editApellidos">Apellidos:</label>
+                <input type="text" name="apellidos" id="editApellidos" required>
+            </div>
+            <div>
+                <label for="editTelefono">Teléfono:</label>
+                <input type="text" name="telefono" id="editTelefono" required>
+            </div>
+            <div>
+                <label for="editEmail">Email:</label>
+                <input type="email" name="email" id="editEmail" required>
+            </div>
+            <div>
+                <label for="editDireccion">Dirección:</label>
+                <input type="text" name="direccion" id="editDireccion" required>
+            </div>
+
+            <div>
+                <button type="submit">Guardar</button>
+                <button type="button" onclick="closeModal()">Cancelar</button>
+            </div>
+        </form>
     </div>
 
-    <div class="main-content">
-        <h1>Lista de Usuarios</h1>
-        <table>
-            <thead>
-                <tr class= "headerTabla">
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>Rol</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Itera sobre todos los usuarios -->
-                <?php foreach ($usuarios as $usuario): ?>
-                    <tr>
-                        <!-- Formulario para editar el usuario -->
-                        <form method="POST">
-                            <!-- Mostrar ID del usuario -->
-                            <td><?= htmlspecialchars($usuario['_id']) ?></td>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+            <th>Dirección</th>
+        </tr>
+        <?php
+        try {
+            $client = new MongoDB\Client("mongodb://localhost:27017");
+            $collection = $client->gestor->cliente;
+            $result = $collection->find();
 
-                            <!-- Campo para editar el nombre -->
-                            <td><input type="text" name="name" value="<?= htmlspecialchars($usuario['name']) ?>"></td>
-
-                            <!-- Campo para editar el correo electrónico -->
-                            <td><input type="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>"></td>
-
-                            <!-- Campo para cambiar la contraseña -->
-                            <td><input type="password" name="password" placeholder="Nueva contraseña"></td>
-
-                            <!-- Campo para seleccionar el rol -->
-                            <td>
-                                <select name="role">
-                                    <option value="1" <?= $usuario['role'] == 1 ? 'selected' : '' ?>>Admin</option>
-                                    <option value="0" <?= $usuario['role'] == 0 ? 'selected' : '' ?>>User</option>
-                                </select>
-                            </td>
-
-                            <td>
-                                <!-- Campo oculto para pasar el _id del usuario -->
-                                <input type="hidden" name="id" value="<?= htmlspecialchars($usuario['_id']) ?>">
-
-                                <!-- Botón para enviar el formulario de actualización -->
-                                <button type="submit">Guardar</button>
-
-                        </form>
-
-                        <!-- Formulario para eliminar el usuario -->
-                        <form method="GET">
-                            <!-- Campo oculto para pasar el _id del usuario para eliminarlo, esto permite trabajar con mas cosas que no sean inputs, como en este caso botones -->
-                            <input type="hidden" name="id" value="<?= htmlspecialchars($usuario['_id']) ?>">
-
-                            <!-- Botón para eliminar al usuario -->
-                            <button type="submit">Eliminar</button>
-                        </form>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+            foreach ($result as $entry) {
+                echo "<tr onclick='openModal(this)' data-id='" . htmlspecialchars($entry->_id) . "'>";
+                echo "<td class='nombre'>" . htmlspecialchars($entry->nombre) . "</td>";
+                echo "<td class='apellidos'>" . htmlspecialchars($entry->apellidos) . "</td>";
+                echo "<td class='telefono'>" . htmlspecialchars($entry->telefono) . "</td>";
+                echo "<td class='email'>" . htmlspecialchars($entry->email) . "</td>";
+                echo "<td class='direccion'>" . htmlspecialchars($entry->direccion) . "</td>";
+                echo "</tr>";
+            }
+        } catch (Exception $e) {
+            echo "<tr><td colspan='6'>Error: " . htmlspecialchars($e->getMessage()) . "</td></tr>";
+        }
+        ?>
+    </table>
     </div>
 </body>
-
 </html>

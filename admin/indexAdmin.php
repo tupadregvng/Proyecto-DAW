@@ -1,10 +1,14 @@
 <?php
+<<<<<<< HEAD
     session_start(); // Iniciar sesión
     $nombre = $_SESSION['name'];
     $role = $_SESSION['role'];
     if(!isset($nombre) || $role !== 1){
         echo "<script>alert('No tienes acceso a esta página.'); window.location.href = '../index.php';</script>";
     }
+=======
+    require("../comprobarAdmin.php");
+>>>>>>> andres-tablas-js
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,14 +21,13 @@
 </head>
 
 <body>
-
     <!-- Menú Lateral (Sidebar) -->
     <div class="sidebar">
-        <a href="#clientes">Clientes</a>
+        <a href="#clientes">Usuarios</a>
+        <a href="#usuarios">Clientes</a>
         <a href="#proveedores">Proveedores</a>
         <a href="#citas">Citas</a>
-        <a href="#stock">Stock</a>
-    
+        <a href="#vehiculos">Vehículos</a>
     </div>
 
     <!-- Contenido Principal -->
@@ -32,7 +35,14 @@
         <div class="header">
             <h1>Panel de Administradores</h1>
         </div>
-        <section id="clientes">
+        <section id="Usuarios">
+            <h2>Usuarios</h2>
+            <p>Aquí podrás gestionar todos los usuarios registrados en el sistema.</p>
+            <button onclick="window.location.href='nuevoUsuario.php';">Añadir nuevo Usuario</button>
+            <button onclick="window.location.href='gestionarUsuario.php';">Ver y Gestionar Usuarios</button>
+        </section>
+
+        <section id="Clientes">
             <h2>Clientes</h2>
             <p>Aquí podrás gestionar todos los clientes registrados en el sistema.</p>
             <button onclick="window.location.href='nuevoCliente.php';">Añadir nuevo cliente</button>
@@ -43,18 +53,21 @@
             <h2>Proveedores</h2>
             <p>Aquí podrás gestionar los proveedores asociados a tu empresa.</p>
             <button onclick="window.location.href='nuevoProveedor.php';">Añadir nuevo proveedor</button>
+            <button onclick="window.location.href='gestionarProovedor.php';">Gestionar proovedores</button>
         </section>
 
         <section id="citas">
             <h2>Citas</h2>
             <p>Aquí podrás gestionar las citas de los clientes y las reparaciones pendientes.</p>
-            <button onclick="window.location.href='citas.php';">Gestionar citas</button>
+            <button onclick="window.location.href='gestionarCitas.php';">Gestionar citas</button>
+            <button onclick="window.location.href='nuevaCita.php';">Añadir cita</button>
         </section>
 
-        <section id="stock">
-            <h2>Stock</h2>
+        <section id="vehiculos">
+            <h2>Vehiculos</h2>
             <p>Aquí podrás ver y administrar el inventario de productos o piezas disponibles.</p>
-            <button onclick="window.location.href='nuevoRecambio.php';">Añadir nuevo recambio</button>
+            <button onclick="window.location.href='nuevaMoto.php';">Añadir nuevo vehiculo</button>
+            <button onclick="window.location.href='gestionarMoto.php';">Gestionar Vehiculos</button>
         </section>
     </div>
 </body>

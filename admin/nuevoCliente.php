@@ -1,24 +1,28 @@
+<?php
+    require("../comprobarAdmin.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilosGenerales.css">
-    <link rel="stylesheet" href="nuevoProveedorCliente.css">
+    <link rel="stylesheet" href="nuevoProveedor.css">
     <title>Formulario de cliente</title>
 </head>
 <body>
     <div class="sidebar">
+        <a href="indexAdmin.php#usuarios">Usuarios</a>
         <a href="indexAdmin.php#clientes">Clientes</a>
         <a href="indexAdmin.php#proveedores">Proveedores</a>
         <a href="indexAdmin.php#citas">Citas</a>
-        <a href="indexAdmin.php#stock">Stock</a>
+        <a href="indexAdmin.php#vehiculos">Vehículos</a>
     </div>
     <div class="main-content">
         <div class="header">
             <h1>Añadir nuevo cliente</h1>
         </div>
-        <form>
+        <form method="POST">
             <!-- Nombre del cliente -->
             <label for="nombre">Nombre del cliente:</label>
             <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre del cliente" required>
@@ -38,34 +42,6 @@
             <!-- Dirección -->
             <label for="direccion">Dirección:</label>
             <input type="text" id="direccion" name="direccion" placeholder="Ingrese la dirección del cliente" rows="4" required>
-            
-            <!-- Marca -->
-            <label for="marca">Marca:</label>
-            <input type="text" id="marca" name="marca" placeholder="Ingrese la marca de la motocicleta" required>
-
-            <!-- Marca -->
-            <label for="modelo">Modelo:</label>
-            <input type="text" id="modelo" name="modelo" placeholder="Ingrese el modelo de la motocicleta" required>
-
-            <!-- Matrícula -->
-            <label for="matricula">Matrícula:</label>
-            <input type="text" id="matricula" name="matricula" placeholder="Ingrese la matrícula de la motocicleta" required>
-
-            <!-- Nº bastidor -->
-            <label for="bastidor">Nº Bastidor:</label>
-            <input type="text" id="bastidor" name="bastidor" placeholder="Ingrese el número de bastidor de la motocicleta" required>
-
-            <!-- F.entrada -->
-            <label for="entrada">Fecha de entrada</label>
-            <input type="text" id="entrada" name="entrada" placeholder="Ingrese la fecha de entrada de la motocicleta" required>
-
-            <!-- F.salida -->
-            <label for="salida">Fecha de salida</label>
-            <input type="text" id="salida" name="salida" placeholder="Ingrese la fecha de salida de la motocicleta" required>
-
-            <!-- Notas adicionales -->
-            <label for="notas">Notas adicionales:</label>
-            <textarea id="notas" name="notas" placeholder="Ingrese cualquier comentario adicional" rows="4"></textarea>
 
             <!-- Botón para enviar -->
             <button type="submit">Guardar cliente</button>
@@ -79,3 +55,38 @@
     </div>
 </body>
 </html>
+<?php
+require '../vendor/autoload.php'; // Cargar librería de MongoDB
+use MongoDB\Driver\Exception\Exception;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Capturar datos del formulario
+    $nombre = $_POST['nombre'];
+    $apellidos= $_POST['apellidos'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $role = 0; // Asignar rol de usuario (1 para admin)
+    $direccion = $_POST['direccion'];
+    $telefono = $_POST['telefono'];
+
+    try {
+        // Conectar a MongoDB
+        $client = new MongoDB\Client("mongodb://localhost:27017");
+        $collection = $client->gestor->cliente; // Base de datos, carpeta 'registro', colección 'usuarios'
+
+        // Insertar datos en la base de datos
+        $result = $collection->insertOne([
+            'email' => $email,
+            'role' => $role, // Rol de usuario
+            'nombre' => $nombre,
+            'apellidos' => $apellidos,
+            'telefono' => $telefono,
+            'direccion' => $direccion
+        ]);
+
+        echo "Usuario registrado con ID: " . $result->getInsertedId();
+    } catch (Exception $e) {
+        echo "Error al registrar el usuario: " . $e->getMessage();
+    }
+}
+?>
