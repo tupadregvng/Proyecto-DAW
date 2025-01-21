@@ -12,10 +12,11 @@
 </head>
 <body>
     <div class="sidebar">
-        <a href="#clientes">Clientes</a>
-        <a href="#proveedores">Proveedores</a>
-        <a href="#stock">Stock</a>
-        <a href="#citas">Citas</a>
+        <a href="indexAdmin.php#usuarios">Usuarios</a>
+        <a href="indexAdmin.php#clientes">Clientes</a>
+        <a href="indexAdmin.php#proveedores">Proveedores</a>
+        <a href="indexAdmin.php#citas">Citas</a>
+        <a href="indexAdmin.php#vehiculos">Vehículos</a>
     </div>
     <div class="main-content">
         <div class="header">

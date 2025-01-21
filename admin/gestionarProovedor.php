@@ -67,7 +67,18 @@
     </script>
 </head>
 <body>
-<h1>Lista de Proovedores</h1>
+    <div class="sidebar">
+        <a href="indexAdmin.php#usuarios">Usuarios</a>
+        <a href="indexAdmin.php#clientes">Clientes</a>
+        <a href="indexAdmin.php#proveedores">Proveedores</a>
+        <a href="indexAdmin.php#citas">Citas</a>
+        <a href="indexAdmin.php#vehiculos">Vehículos</a>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Lista de proveedores</h1>
+        </div>
     <?php
     require '../vendor/autoload.php';
 
@@ -177,5 +188,6 @@
         }
         ?>
     </table>
+    </div>
 </body>
 </html>
