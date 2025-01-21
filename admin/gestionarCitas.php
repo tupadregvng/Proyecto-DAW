@@ -4,62 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilosGenerales.css">
-    <link rel="stylesheet" href="gestionarUsuario.css">
+    <link rel="stylesheet" href="css/gestionarUsuario.css">
+    <script src="js/gestionarCitas.js"></script>
     <title>Gestionar Citas</title>
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
 
-        .modal.active {
-            display: block;
-        }
-
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-
-        .modal-overlay.active {
-            display: block;
-        }
-    </style>
-    <script>
-        function openModal(row) {
-            const modal = document.getElementById('editModal');
-            const overlay = document.getElementById('modalOverlay');
-
-            // Fill form fields with row data
-            document.getElementById('editId').value = row.dataset.id;
-            document.getElementById('editCliente').value = row.querySelector('.cliente').innerText;
-            document.getElementById('editFecha').value = row.querySelector('.fecha').innerText;
-            document.getElementById('editHora').value = row.querySelector('.hora').innerText;
-            document.getElementById('editObservaciones').value = row.querySelector('.observaciones').innerText;
-
-            modal.classList.add('active');
-            overlay.classList.add('active');
-        }
-
-        function closeModal() {
-            document.getElementById('editModal').classList.remove('active');
-            document.getElementById('modalOverlay').classList.remove('active');
-        }
-    </script>
 </head>
 <body>
 <h1>Lista de Citas</h1>

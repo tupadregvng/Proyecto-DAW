@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilosGenerales.css">
-    <link rel="stylesheet" href="indexAdmin.css">
+    <link rel="stylesheet" href="css/indexAdmin.css">
     <title>Panel de administradores</title>
 </head>
 
@@ -47,8 +47,8 @@
         <section id="citas">
             <h2>Citas</h2>
             <p>Aquí podrás gestionar las citas de los clientes y las reparaciones pendientes.</p>
-            <button onclick="window.location.href='gestionarCitas.php';">Gestionar citas</button>
             <button onclick="window.location.href='nuevaCita.php';">Añadir cita</button>
+            <button onclick="window.location.href='gestionarCitas.php';">Gestionar citas</button>
         </section>
 
         <section id="vehiculos">

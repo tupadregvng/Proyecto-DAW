@@ -59,7 +59,7 @@ $usuarios = $collection->find();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionar Clientes</title>
     <link rel="stylesheet" href="../estilosGenerales.css">
-    <link rel="stylesheet" href="gestionarUsuario.css">
+    <link rel="stylesheet" href="css/gestionarUsuario.css">
 </head>
 
 <body>
