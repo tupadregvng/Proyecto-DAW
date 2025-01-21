@@ -19,6 +19,10 @@
         <a href="#proveedores">Proveedores</a>
         <a href="#citas">Citas</a>
         <a href="#vehiculos">Vehículos</a>
+
+        <div class="cerrar">
+            <a href="../index.php">Cerrar sessión</a>
+        </div>
     </div>
 
     <!-- Contenido Principal -->

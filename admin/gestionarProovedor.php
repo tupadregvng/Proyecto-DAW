@@ -18,6 +18,10 @@
         <a href="indexAdmin.php#proveedores">Proveedores</a>
         <a href="indexAdmin.php#citas">Citas</a>
         <a href="indexAdmin.php#vehiculos">Vehículos</a>
+
+        <div class="cerrar">
+            <a href="../index.php">Cerrar sessión</a>
+        </div>
     </div>
 
     <div class="main-content">
