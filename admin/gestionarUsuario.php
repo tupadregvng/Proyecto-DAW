@@ -84,7 +84,7 @@ $usuarios = $collection->find();
         </div>
         <table>
             <thead>
-                <tr>
+                <tr class="headerTabla">
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Email</th>

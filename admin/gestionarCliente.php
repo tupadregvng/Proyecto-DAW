@@ -101,7 +101,7 @@
     </div>
 
     <table>
-        <tr>
+        <tr class="headerTabla">
             <th>Nombre</th>
             <th>Apellidos</th>
             <th>Teléfono</th>

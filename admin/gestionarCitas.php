@@ -100,7 +100,7 @@
     </div>
 
     <table>
-        <tr>
+        <tr class="headerTabla">
             <th>Cliente</th>
             <th>Fecha</th>
             <th>Hora</th>
