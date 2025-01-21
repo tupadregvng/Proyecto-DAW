@@ -99,7 +99,7 @@
         </form>
     </div>
 
-    <table>
+    <table id= "tabla">
         <tr class="headerTabla">
             <th>Cliente</th>
             <th>Fecha</th>
