@@ -60,7 +60,7 @@ $citas = $collection->find(['cliente'=> $nombre]);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionar Clientes</title>
     <link rel="stylesheet" href="../estilosGenerales.css">
-    <script src="funciones.js" defer></script>
+    <script src="js/funciones.js" defer></script>
 </head>
 
 <body>
