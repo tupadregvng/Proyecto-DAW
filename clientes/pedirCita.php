@@ -22,6 +22,7 @@
             'hora' => $hora, 
             'observaciones' => $observacion,
             'estado' => "Pendiente",
+            'timestamp' => new MongoDB\BSON\UTCDateTime(new DateTime()) // Agregar timestamp de fecha de creación
         ]);
         header("Location: indexCliente.php?registro=exito");
     } catch (Exception $e) {

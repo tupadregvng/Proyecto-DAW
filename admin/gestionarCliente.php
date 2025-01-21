@@ -1,90 +1,23 @@
-<?php
-    require("../comprobarAdmin.php");
-?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilosGenerales.css">
-    <link rel="stylesheet" href="gestionarUsuario.css">
+    <link rel="stylesheet" href="css/gestionarUsuario.css">
+    <script src="js/gestionarCliente.js"></script>
     <title>Gestionar Clientes</title>
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
 
-        .modal.active {
-            display: block;
-        }
-
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-
-        .modal-overlay.active {
-            display: block;
-        }
-    </style>
-    <script>
-        function openModal(row) {
-            const modal = document.getElementById('editModal');
-            const overlay = document.getElementById('modalOverlay');
-
-            // Fill form fields with row data
-            document.getElementById('editId').value = row.dataset.id;
-            document.getElementById('editNombre').value = row.querySelector('.nombre').innerText;
-            document.getElementById('editApellidos').value = row.querySelector('.apellidos').innerText;
-            document.getElementById('editTelefono').value = row.querySelector('.telefono').innerText;
-            document.getElementById('editEmail').value = row.querySelector('.email').innerText;
-            document.getElementById('editDireccion').value = row.querySelector('.direccion').innerText;
-
-            modal.classList.add('active');
-            overlay.classList.add('active');
-        }
-
-        function closeModal() {
-            document.getElementById('editModal').classList.remove('active');
-            document.getElementById('modalOverlay').classList.remove('active');
-        }
-    </script>
 </head>
 <body>
-    <div class="sidebar">
-        <a href="indexAdmin.php#usuarios">Usuarios</a>
-        <a href="indexAdmin.php#clientes">Clientes</a>
-        <a href="indexAdmin.php#proveedores">Proveedores</a>
-        <a href="indexAdmin.php#citas">Citas</a>
-        <a href="indexAdmin.php#vehiculos">Vehículos</a>
-    </div>
-    
-    <div class="main-content">
-        <div class="header">
-            <h1>Lista de clientes</h1>
-        </div>
+<h1>Lista de Clientes</h1>
     <?php
     require '../vendor/autoload.php';
 
     function updateCliente($data) {
         try {
             $client = new MongoDB\Client("mongodb://localhost:27017");
-            $collection = $client->gestor->clientes;
+            $collection = $client->gestor->cliente;
 
             $result = $collection->updateOne(
                 ['_id' => new MongoDB\BSON\ObjectId($data['id'])],
@@ -178,6 +111,5 @@
         }
         ?>
     </table>
-    </div>
 </body>
 </html>
