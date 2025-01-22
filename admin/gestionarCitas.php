@@ -112,7 +112,23 @@
                 </div>
                 <div>
                     <label for="editHora">Hora:</label>
-                    <input type="time" name="hora" id="editHora" required>
+                    <select name="hora" id="editHora" required>
+                        <option value="8:00">8:00</option>
+                        <option value="8:30">8:30</option>
+                        <option value="9:00">9:00</option>
+                        <option value="9:30">9:30</option>
+                        <option value="10:00">10:00</option>
+                        <option value="10:30">10:30</option>
+                        <option value="11:00">11:00</option>
+                        <option value="11:30">11:30</option>
+                        <option value="12:00">12:00</option>
+                        <option value="12:30">12:30</option>
+                        <option value="13:00">13:00</option>
+                        <option value="13:30">13:30</option>
+                        <option value="14:00">14:00</option>
+                        <option value="14:30">14:30</option>
+                        <option value="15:00">15:00</option>
+                    </select>
                 </div>
                 <div>
                     <label for="editObservaciones">Observaciones:</label>
