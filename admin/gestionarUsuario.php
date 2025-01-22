@@ -106,7 +106,7 @@ $usuarios = $collection->find();
                             <td><input type="text" name="name" value="<?= htmlspecialchars($usuario['name']) ?>"></td>
 
                             <!-- Campo para editar el correo electrónico -->
-                            <td><input type="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>"></td>
+                            <td><input type="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"></td>
 
                             <!-- Campo para cambiar la contraseña -->
                             <td><input type="password" name="password" placeholder="Nueva contraseña"></td>

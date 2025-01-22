@@ -103,11 +103,11 @@
             </div>
             <div>
                 <label for="editTelefono">Teléfono:</label>
-                <input type="text" name="telefono" id="editTelefono" required>
+                <input type="text" name="telefono" id="editTelefono"  pattern = "^\+?[0-9]+$" required>
             </div>
             <div>
                 <label for="editEmail">Email:</label>
-                <input type="email" name="email" id="editEmail" required>
+                <input type="email" name="email" id="editEmail"  pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"required>
             </div>
             <div>
                 <label for="editDireccion">Dirección:</label>

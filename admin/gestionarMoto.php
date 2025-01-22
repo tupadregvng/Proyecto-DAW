@@ -108,11 +108,11 @@
             </div>
             <div>
                 <label for="editBastidor">Bastidor:</label>
-                <input type="text" name="bastidor" id="editBastidor" required>
+                <input type="text" name="bastidor" id="editBastidor"  pattern="^[A-Za-z0-9]{17}$" required>
             </div>
             <div>
                 <label for="editMatricula">Matrícula:</label>
-                <input type="text" name="matricula" id="editMatricula" required>
+                <input type="text" name="matricula" id="editMatricula"  pattern="(^\d{4}\s?[A-Z]{3}$)" required>
             </div>
             <div>
                 <label for="editNotas">Notas:</label>

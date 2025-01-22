@@ -33,7 +33,7 @@
 
             <!-- Correo electrónico -->
             <label for="email">Correo Electrónico:</label>
-            <input type="email" id="email" name="email" placeholder="Ingrese el correo electrónico" required>
+            <input type="email" id="email" name="email" placeholder="Ingrese el correo electrónico" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" required>
 
             <!-- Contraseña -->
             <label for="password">Contraseña:</label>
