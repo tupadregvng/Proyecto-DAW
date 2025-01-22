@@ -103,10 +103,10 @@ $motos = $collection->find(['cliente'=> $nombre]);
                             <td><input type="modelo" name="modelo" value="<?= htmlspecialchars($moto['modelo']) ?>"></td>
 
                             <!-- Campo para cambiar el bastidor -->
-                            <td><input type="bastidor" name="bastidor" value="<?= htmlspecialchars($moto['bastidor']) ?>"></td>
+                            <td><input type="bastidor" name="bastidor" value="<?= htmlspecialchars($moto['bastidor']) ?>" pattern="^[A-Za-z0-9]{17}$"></td>
 
                             <!-- Campo para cambiar la matricula -->
-                            <td><input type="matricula" name="matricula" value="<?= htmlspecialchars($moto['matricula']) ?>"></td>
+                            <td><input type="matricula" name="matricula" value="<?= htmlspecialchars($moto['matricula']) ?>" pattern="(^\d{4}\s?[A-Z]{3}$)"></td>
                             
                             <!-- Campo para cambiar la descripción-->
                             <td><input type="notas" name="notas" value="<?= htmlspecialchars($moto['notas']) ?>"></td>
