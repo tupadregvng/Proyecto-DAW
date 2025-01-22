@@ -1,3 +1,6 @@
+<?php
+    require("../comprobarAdmin.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +13,23 @@
 
 </head>
 <body>
-<h1>Lista de Citas</h1>
+    <div class="sidebar">
+        <a href="indexAdmin.php#usuarios">Usuarios</a>
+        <a href="indexAdmin.php#clientes">Clientes</a>
+        <a href="indexAdmin.php#proveedores">Proveedores</a>
+        <a href="indexAdmin.php#citas">Citas</a>
+        <a href="indexAdmin.php#vehiculos">Vehículos</a>
+
+        <div class="cerrar">
+            <a href="../index.php">Cerrar sessión</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Lista de citas</h1>
+        </div>
+
     <?php
     require '../vendor/autoload.php';
 
@@ -25,23 +44,39 @@
                     'cliente' => $data['cliente'],
                     'fecha' => $data['fecha'],
                     'hora' => $data['hora'],
-                    'observaciones' => $data['observaciones']
+                    'observaciones' => $data['observaciones'],
+                    'estado' => $data['estado'],
                 ]]
             );
 
             return [
-                'success' => $result->getModifiedCount() > 0,
-                'message' => $result->getModifiedCount() > 0 ? "Cita actualizada con éxito." : "No se modificó ningún documento."
+                #'success' => $result->getModifiedCount() > 0,
+                #'message' => $result->getModifiedCount() > 0 ? "Cita actualizada con éxito." : "No se modificó ningún documento."
             ];
         } catch (Exception $e) {
-            return ['success' => false, 'message' => $e->getMessage()];
+            # return ['success' => false, 'message' => $e->getMessage()];
+        }
+    }
+    function deleteCita($id) {
+        try {
+            $client = new MongoDB\Client("mongodb://localhost:27017");
+            $collection = $client->gestor->citas;
+    
+            $result = $collection->deleteOne(['_id' => new MongoDB\BSON\ObjectId($id)]);
+    
+            return [
+                # 'success' => $result->getDeletedCount() > 0,
+                # 'message' => $result->getDeletedCount() > 0 ? "Cita eliminada con éxito." : "No se encontró la cita para eliminar."
+            ];
+        } catch (Exception $e) {
+            # return ['success' => false, 'message' => $e->getMessage()];
         }
     }
 
     $message = '';
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = updateCita($_POST);
-        $message = $result['message'];
+        # $message = $result['message'];
     }
     ?>
 
@@ -74,18 +109,28 @@
             </div>
 
             <div>
+                <label for="editEstado">Estado:</label>
+                <select name="estado" id="editEstado" required>
+                    <option value="Aceptado">Aceptado</option>
+                    <option value="Pendiente">Pendiente</option>
+                </select>
+            </div>
+
+            <div>
                 <button type="submit">Guardar</button>
                 <button type="button" onclick="closeModal()">Cancelar</button>
             </div>
         </form>
     </div>
 
-    <table>
-        <tr>
+    <table id= "tabla">
+        <tr class="headerTabla">
             <th>Cliente</th>
             <th>Fecha</th>
             <th>Hora</th>
             <th>Observaciones</th>
+            <th>Estado</th>
+            <th>Eliminar</th>
         </tr>
         <?php
         try {
@@ -99,6 +144,7 @@
                 echo "<td class='fecha'>" . htmlspecialchars($entry->fecha) . "</td>";
                 echo "<td class='hora'>" . htmlspecialchars($entry->hora) . "</td>";
                 echo "<td class='observaciones'>" . htmlspecialchars($entry->observaciones) . "</td>";
+                echo "<td class='observaciones'>" . htmlspecialchars($entry->estado) . "</td>";
                 echo "</tr>";
             }
         } catch (Exception $e) {
@@ -106,5 +152,6 @@
         }
         ?>
     </table>
+    </div>
 </body>
 </html>

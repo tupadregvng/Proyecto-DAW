@@ -1,6 +1,5 @@
 <?php
-    session_start(); // Iniciar sesión
-    $nombre = $_SESSION['name'];
+    require("../comprobarLogin.php");
 
     // Conectar a MongoDB
     require '../vendor/autoload.php'; // Cargar librería de MongoDB
@@ -21,18 +20,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilosGenerales.css">
-    <link rel="stylesheet" href="indexCliente.css">
-    <script src="registroExitoCita.js"></script>
+    <link rel="stylesheet" href="cliente.css">
+    <script src="js/registroExito.js"></script>
     <title>Cliente</title>
 </head>
 <body>
     <!-- Menú lateral -->
     <div class="sidebar">
-        <a href="#misMoto">ESTADO DE MOTOCICLETA</a>
-        <a href="#cita">CITAS</a>
-        <a href="#pedir-cita">PEDIR CITA</a>
-        <a href="../tiendaWeb.html">REALIZAR COMPRAS</a>
+        <div>
+            <a href="#misMoto">ESTADO DE MOTOCICLETA</a>
+            <a href="#cita">CITAS</a>
+            <a href="#pedir-cita">PEDIR CITA</a>
+            <a href="../tiendaWeb.html">REALIZAR COMPRAS</a>
+        </div>
+        <!-- botón cerrar sesión -->
+        <div class="cerrar">
+            <a href="../index.php">Cerrar sessión</a>
+        </div>
     </div>
+    
     <div class="main-content">
         <!-- Título superior -->
         <div class="header">
@@ -60,7 +66,10 @@
                     }
                 ?> 
             </table>
-            <button onclick="window.location.href='nuevaMoto.php'">Añadir nueva motocicleta</button>    
+            <div id = "secBotones">
+                <button onclick="window.location.href='gestionMotos.php'">Editar</button>
+                <button onclick="window.location.href='nuevaMoto.php'">Añadir nueva motocicleta</button>  
+            </div>  
         </section>
         
 
@@ -75,6 +84,7 @@
                         <th>Fecha</th>
                         <th>Hora</th>
                         <th>Motivo</th>
+                        <th>Estado</th>
                     </tr>
                     <?php
                         foreach ($citas as $cita) {
@@ -82,10 +92,12 @@
                                 echo "<td>" . htmlspecialchars($cita['fecha']) . "</td>";
                                 echo "<td>" . htmlspecialchars($cita['hora']) . "</td>";
                                 echo "<td>" . htmlspecialchars($cita['observaciones']) . "</td>";
+                                echo "<td>" . htmlspecialchars($cita['estado']) . "</td>";
                             echo "</tr>";
                         }
                     ?>    
                 </table>
+                <button onclick="window.location.href='gestionCitas.php'">Editar</button>
             </div>
 
             <!-- pedir cita -->

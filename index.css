@@ -1,20 +1,42 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,300);
 
 body, html {
-  background: #34495e; /* #34495e */
+  /* background: #34495e; /* #34495e */
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   font-weight: 400;
 }
-.wrap {
-  margin: 0 auto;
-} 
+
+/* Estilos de body */
+body{
+  background-image: url(img/tallerfondo.webp);
+  background-size: 105%; /* Incrementa el tamaño de la imagen al 150% para simular zoom */
+  background-repeat: no-repeat; /* Evita que se repita */
+  background-position: center; /* Mantiene el centro visible después del zoom */
+  background-attachment: fixed;
+}
+
+/* Estilos de la seccion del formulario */
 .login {
+  margin: 0 auto;
   width: 300px;
   margin-top: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* estilos de inputs */
 .login input[type=text],
-.login input[type=password] {
+.login input[type=password],
+.login input[type=email] {
   opacity: 1;
   display: block;
   border: none;
@@ -28,49 +50,37 @@ body, html {
   animation: bounce 1s;
   -webkit-appearance: none;
 }
-.login input[type=text]:focus:valid {
-  box-shadow: 0 0 0 10000px #2ecc71;
-}
-.login input[type=text]:focus:valid ~ input[type=button] {
-  background: #27ae60;
-  color: #2ecc71;
-}
-.login input[type=text]:focus:valid ~ input[type=submit] {
-  color: #2ecc71;
-}
-.login input[type=text]:invalid {
-  box-shadow: 0 0 0 10000px #e74c3c;
-}
-.login input[type=text]:invalid ~ input[type=button] {
-  background: #c0392b;
-  color: #e74c3c;
-}
-.login input[type=text]:invalid ~ input[type=submit] {
-  color: #e74c3c;
-}
-.login input[type=password] {
+
+.login input[type=password],
+.login input[type=email] {
   animation: bounce1 1.3s;
 }
-.login input[type=submit],
-.login input[type=button] {
+
+/* estilos de botones */
+.btnLogin{
+  margin: 40px 0 0 0;
+}
+
+.btnRegistro, .btnLogin{
   border: 0;
   outline: 0;
   padding: 13px 18px;
-  margin: 40px 0 0 0;
   border-radius: 2px;
   font-weight: 600;
   animation: bounce2 1.6s;
-} 
+  margin: 20px 0 0 0;
+}
 .login input[type=submit] {
-  float: right;
-  background: #fff;  
-  color: #34495e;
+  background-color: #740303;  
+  color: white;
   outline: none;
 }
-.login input[type=button] {
-  background: #fff;
-  color: #34495e;
+
+.login input[type=submit]:hover{
+  background-color: #bb1414;
 }
+
+/* Animaciones */
 @keyframes bounce {
   0% { transform: translateY(-250px); opacity: 0; }
 } 
@@ -81,4 +91,16 @@ body, html {
 @keyframes bounce2 {
   0% {  opacity: 0; }
   70% { transform: translateY(-20px); opacity: 0;}
-}      
+}
+
+.login p {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+  color: white;
+}
+
+.login a {
+  color: #2ecc71;
+  text-decoration: none;
+}

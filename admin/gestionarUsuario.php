@@ -1,4 +1,7 @@
 <?php
+    require("../comprobarAdmin.php");
+?>
+<?php
 // Requiere MongoDB
 require '../vendor/autoload.php';
 
@@ -64,17 +67,24 @@ $usuarios = $collection->find();
 
 <body>
     <div class="sidebar">
+        <a href="indexAdmin.php#usuarios">Usuarios</a>
         <a href="indexAdmin.php#clientes">Clientes</a>
         <a href="indexAdmin.php#proveedores">Proveedores</a>
         <a href="indexAdmin.php#citas">Citas</a>
-        <a href="indexAdmin.php#stock">Stock</a>
+        <a href="indexAdmin.php#vehiculos">Vehículos</a>
+
+        <div class="cerrar">
+            <a href="../index.php">Cerrar sessión</a>
+        </div>
     </div>
 
     <div class="main-content">
-        <h1>Lista de Usuarios</h1>
+        <div class="header">
+            <h1>Lista de usuarios</h1>
+        </div>
         <table>
             <thead>
-                <tr>
+                <tr class="headerTabla">
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Email</th>

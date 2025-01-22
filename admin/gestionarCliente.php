@@ -10,7 +10,24 @@
 
 </head>
 <body>
-<h1>Lista de Clientes</h1>
+    <!-- Menú Lateral (Sidebar) -->
+    <div class="sidebar">
+        <a href="indexAdmin.php#usuarios">Usuarios</a>
+        <a href="indexAdmin.php#clientes">Clientes</a>
+        <a href="indexAdmin.php#proveedores">Proveedores</a>
+        <a href="indexAdmin.php#citas">Citas</a>
+        <a href="indexAdmin.php#vehiculos">Vehículos</a>
+
+        <div class="cerrar">
+            <a href="../index.php">Cerrar sessión</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Lista de clientes</h1>
+        </div>
+
     <?php
     require '../vendor/autoload.php';
 
@@ -31,18 +48,18 @@
             );
 
             return [
-                'success' => $result->getModifiedCount() > 0,
-                'message' => $result->getModifiedCount() > 0 ? "Cliente actualizado con éxito." : "No se modificó ningún documento."
+                #'success' => $result->getModifiedCount() > 0,
+                #'message' => $result->getModifiedCount() > 0 ? "Cliente actualizado con éxito." : "No se modificó ningún documento."
             ];
         } catch (Exception $e) {
-            return ['success' => false, 'message' => $e->getMessage()];
+            # return ['success' => false, 'message' => $e->getMessage()];
         }
     }
 
     $message = '';
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = updateCliente($_POST);
-        $message = $result['message'];
+        # $message = $result['message'];
     }
     ?>
 
@@ -84,7 +101,7 @@
     </div>
 
     <table>
-        <tr>
+        <tr class="headerTabla">
             <th>Nombre</th>
             <th>Apellidos</th>
             <th>Teléfono</th>
@@ -111,5 +128,6 @@
         }
         ?>
     </table>
+    </div>
 </body>
 </html>

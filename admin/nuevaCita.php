@@ -1,3 +1,6 @@
+<?php
+    require("../comprobarAdmin.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,11 +12,15 @@
 </head>
 <body>
     <div class="sidebar">
-        <a href="indexAdmin.php#motos">Motos</a>
+        <a href="indexAdmin.php#usuarios">Usuarios</a>
         <a href="indexAdmin.php#clientes">Clientes</a>
         <a href="indexAdmin.php#proveedores">Proveedores</a>
         <a href="indexAdmin.php#citas">Citas</a>
-        <a href="indexAdmin.php#stock">Stock</a>  
+        <a href="indexAdmin.php#vehiculos">Vehículos</a>
+
+        <div class="cerrar">
+            <a href="../index.php">Cerrar sessión</a>
+        </div>
     </div>
     <div class="main-content">
         <div class="header">
@@ -80,12 +87,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'fecha' => $fecha,
             'hora' => $hora,
             'observaciones' => $observacion,
+            'estado' => "Aceptada",
             'timestamp' => new MongoDB\BSON\UTCDateTime(new DateTime()) // Agregar timestamp de fecha de creación
         ]);
 
-        echo "Cita registrada con ID: " . $result->getInsertedId();
+       # echo "Cita registrada con ID: " . $result->getInsertedId();
     } catch (Exception $e) {
-        echo "Error al registrar la cita: " . $e->getMessage();
+       # echo "Error al registrar la cita: " . $e->getMessage();
     }
 }
 ?>

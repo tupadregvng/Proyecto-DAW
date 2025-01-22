@@ -1,3 +1,6 @@
+<?php
+    require("../comprobarAdmin.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +14,15 @@
 <body>
     <!-- Menú Lateral (Sidebar) -->
     <div class="sidebar">
-        <a href="#clientes">Clientes</a>
-        <a href="#usuarios">Usuarios</a>
+        <a href="#clientes">Usuarios</a>
+        <a href="#usuarios">Clientes</a>
         <a href="#proveedores">Proveedores</a>
         <a href="#citas">Citas</a>
-        <a href="#stock">Stock</a>
+        <a href="#vehiculos">Vehículos</a>
+
+        <div class="cerrar">
+            <a href="../index.php">Cerrar sessión</a>
+        </div>
     </div>
 
     <!-- Contenido Principal -->
@@ -23,18 +30,18 @@
         <div class="header">
             <h1>Panel de Administradores</h1>
         </div>
-        <section id="Clientes">
-            <h2>Clientes</h2>
-            <p>Aquí podrás gestionar todos los clientes registrados en el sistema.</p>
-            <button onclick="window.location.href='nuevoCliente.php';">Añadir nuevo cliente</button>
-            <button onclick="window.location.href='gestionarCliente.php';">Ver y Gestionar Clientes</button>
-        </section>
-
         <section id="Usuarios">
             <h2>Usuarios</h2>
             <p>Aquí podrás gestionar todos los usuarios registrados en el sistema.</p>
             <button onclick="window.location.href='nuevoUsuario.php';">Añadir nuevo Usuario</button>
             <button onclick="window.location.href='gestionarUsuario.php';">Ver y Gestionar Usuarios</button>
+        </section>
+
+        <section id="Clientes">
+            <h2>Clientes</h2>
+            <p>Aquí podrás gestionar todos los clientes registrados en el sistema.</p>
+            <button onclick="window.location.href='nuevoCliente.php';">Añadir nuevo cliente</button>
+            <button onclick="window.location.href='gestionarCliente.php';">Ver y Gestionar Clientes</button>
         </section>
 
         <section id="proveedores">

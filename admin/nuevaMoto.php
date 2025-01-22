@@ -1,3 +1,6 @@
+<?php
+    require("../comprobarAdmin.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,11 +12,15 @@
 </head>
 <body>
     <div class="sidebar">
-        <a href="indexAdmin.php#motos">Motos</a>
+        <a href="indexAdmin.php#usuarios">Usuarios</a>
         <a href="indexAdmin.php#clientes">Clientes</a>
         <a href="indexAdmin.php#proveedores">Proveedores</a>
         <a href="indexAdmin.php#citas">Citas</a>
-        <a href="indexAdmin.php#stock">Stock</a>  
+        <a href="indexAdmin.php#vehiculos">Vehículos</a>
+
+        <div class="cerrar">
+            <a href="../index.php">Cerrar sessión</a>
+        </div>
     </div>
     <div class="main-content">
         <div class="header">
@@ -45,11 +52,11 @@
 
             <!-- Bastidor -->
             <label for="bastidor">Número de Bastidor:</label>
-            <input type="text" id="bastidor" name="bastidor" placeholder="Ingrese el número de bastidor" required>
+            <input type="text" id="bastidor" name="bastidor" pattern="^[A-Za-z0-9]{17}$"  placeholder = " Ingrese el número de bastidor (17 dígitos)" required>
 
             <!-- Matrícula -->
             <label for="matricula">Matrícula:</label>
-            <input type="text" id="matricula" name="matricula" placeholder="Ingrese la matrícula del vehículo" required>
+            <input type="text" id="matricula" name="matricula" pattern="(^\d{4}\s?[A-Z]{3}$)"  placeholder = "Ingrese la matrícula (ej:1234 ZZZ)" required>
 
             <!-- Notas adicionales -->
             <label for="notas">Notas adicionales:</label>
@@ -70,8 +77,6 @@
 <?php
 require '../vendor/autoload.php'; // Cargar librería de MongoDB
 use MongoDB\Driver\Exception\Exception;
-
-session_start(); // Asegurar que la sesión esté iniciada
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Capturar datos del formulario
@@ -99,9 +104,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'timestamp' => new MongoDB\BSON\UTCDateTime(new DateTime()) // Agregar timestamp de fecha de creación
         ]);
 
-        echo "Vehículo registrado con ID: " . $result->getInsertedId();
+        # echo "Vehículo registrado con ID: " . $result->getInsertedId();
     } catch (Exception $e) {
-        echo "Error al registrar el vehículo: " . $e->getMessage();
+        # echo "Error al registrar el vehículo: " . $e->getMessage();
     }
 }
 ?>

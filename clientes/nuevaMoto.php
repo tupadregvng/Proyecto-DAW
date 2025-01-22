@@ -1,6 +1,5 @@
 <?php
-    session_start(); // Iniciar sesión
-    $nombre = $_SESSION['name'];
+    require("../comprobarLogin.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,16 +7,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../estilosGenerales.css">
-    <link rel="stylesheet" href="nuevaMoto.css">
+    <link rel="stylesheet" href="cliente.css">
     <title>nueva Moto</title>
 </head>
 <body>
     <!-- Menú lateral -->
     <div class="sidebar">
-        <a href="#misMoto">ESTADO DE MOTOCICLETA</a>
-        <a href="#cita">CITAS</a>
-        <a href="#pedir-cita">PEDIR CITA</a>
+        <a href="indexCliente.php#misMoto">ESTADO DE MOTOCICLETA</a>
+        <a href="indexCliente.php#cita">CITAS</a>
+        <a href="indexCliente.php#pedir-cita">PEDIR CITA</a>
         <a href="../tiendaWeb.html">REALIZAR COMPRAS</a>
+
+        <!-- botón cerrar sesión -->
+        <div class="cerrar">
+            <a href="../index.php">Cerrar sessión</a>
+        </div>
     </div>
     <div class="main-content">
         <!-- Título superior -->
@@ -28,16 +32,16 @@
         </div>
         <form action="nuevaMoto.php" method="POST">
             <label for="marca">Marca:</label>
-            <input type="text" id="marca" name="marca" required>
+            <input type="text" id="marca" name="marca" placeholder="Ingrese la marca del vehículo" required>
 
             <label for="modelo">Modelo:</label>
-            <input type="text" id="modelo" name="modelo" required>
+            <input type="text" id="modelo" name="modelo" placeholder="Ingrese el modelo del vehículo" required>
 
             <label for="bastidor">Nº Bastidor:</label>
-            <input type="text" id="bastidor" name="bastidor" required>
+            <input type="text" id="bastidor" name="bastidor" pattern="^[A-Za-z0-9]{17}$"  placeholder = "Nº de 17 dígitos" required>
 
             <label for="matricula">Matrícula:</label>
-            <input type="text" id="matricula" name="matricula" required>
+            <input type="text" id="matricula" name="matricula" pattern="(^\d{4}\s?[A-Z]{3}$)"  placeholder = "1234 ZZZ" required>
 
 
             <label for="notas">Notas adicionales:</label>
