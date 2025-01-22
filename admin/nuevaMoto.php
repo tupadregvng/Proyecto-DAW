@@ -52,11 +52,11 @@
 
             <!-- Bastidor -->
             <label for="bastidor">Número de Bastidor:</label>
-            <input type="text" id="bastidor" name="bastidor" placeholder="Ingrese el número de bastidor" required>
+            <input type="text" id="bastidor" name="bastidor" pattern="^[A-Za-z0-9]{17}$"  placeholder = " Ingrese el número de bastidor (17 dígitos)" required>
 
             <!-- Matrícula -->
             <label for="matricula">Matrícula:</label>
-            <input type="text" id="matricula" name="matricula" placeholder="Ingrese la matrícula del vehículo" required>
+            <input type="text" id="matricula" name="matricula" pattern="(^\d{4}\s?[A-Z]{3}$)"  placeholder = "Ingrese la matrícula (ej:1234 ZZZ)" required>
 
             <!-- Notas adicionales -->
             <label for="notas">Notas adicionales:</label>

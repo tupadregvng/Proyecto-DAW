@@ -38,10 +38,10 @@
             <input type="text" id="modelo" name="modelo" required>
 
             <label for="bastidor">Nº Bastidor:</label>
-            <input type="text" id="bastidor" name="bastidor" pattern="^[A-Za-z0-9]{17}$" required>
+            <input type="text" id="bastidor" name="bastidor" pattern="^[A-Za-z0-9]{17}$"  placeholder = "Nº de 17 dígitos" required>
 
             <label for="matricula">Matrícula:</label>
-            <input type="text" id="matricula" name="matricula" pattern="(^\d{4}\s?[A-Z]{3}$)" required>
+            <input type="text" id="matricula" name="matricula" pattern="(^\d{4}\s?[A-Z]{3}$)"  placeholder = "1234 ZZZ" required>
 
 
             <label for="notas">Notas adicionales:</label>
