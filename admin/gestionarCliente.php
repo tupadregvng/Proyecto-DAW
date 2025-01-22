@@ -48,18 +48,38 @@
             );
 
             return [
-                'success' => $result->getModifiedCount() > 0,
-                'message' => $result->getModifiedCount() > 0 ? "Cliente actualizado con éxito." : "No se modificó ningún documento."
+                #'success' => $result->getModifiedCount() > 0,
+                #'message' => $result->getModifiedCount() > 0 ? "Cliente actualizado con éxito." : "No se modificó ningún documento."
             ];
         } catch (Exception $e) {
-            return ['success' => false, 'message' => $e->getMessage()];
+            # return ['success' => false, 'message' => $e->getMessage()];
         }
     }
+    function deleteCliente($id)
+    {
+        try {
+            $client = new MongoDB\Client("mongodb://localhost:27017");
+            $collection = $client->gestor->cliente;
 
+            $result = $collection->deleteOne(['_id' => new MongoDB\BSON\ObjectId($id)]);
+            header('Location: ' . $_SERVER['PHP_SELF']);
+
+            return [
+                # 'success' => $result->getDeletedCount() > 0,
+                # 'message' => $result->getDeletedCount() > 0 ? "Cita eliminada con éxito." : "No se encontró la cita para eliminar."
+            ];
+        } catch (Exception $e) {
+            # return ['success' => false, 'message' => $e->getMessage()];
+        }
+    }
     $message = '';
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = updateCliente($_POST);
-        $message = $result['message'];
+        # $message = $result['message'];
+    }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteId'])) {
+        $deleteId = $_POST['deleteId'];
+        $result = deleteCliente($deleteId);
     }
     ?>
 
@@ -107,6 +127,7 @@
             <th>Teléfono</th>
             <th>Email</th>
             <th>Dirección</th>
+            <th>Eliminar</th>
         </tr>
         <?php
         try {
@@ -121,6 +142,12 @@
                 echo "<td class='telefono'>" . htmlspecialchars($entry->telefono) . "</td>";
                 echo "<td class='email'>" . htmlspecialchars($entry->email) . "</td>";
                 echo "<td class='direccion'>" . htmlspecialchars($entry->direccion) . "</td>";
+                echo "<td>
+                <form method='POST' action=''>
+                    <input type='hidden' name='deleteId' value='" . htmlspecialchars($entry->_id) . "'>
+                    <button type='submit' onclick='return confirm(\"¿Seguro que quieres eliminar este cliente?\")'>Eliminar</button>
+                </form>
+              </td>";
                 echo "</tr>";
             }
         } catch (Exception $e) {

@@ -91,9 +91,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'timestamp' => new MongoDB\BSON\UTCDateTime(new DateTime()) // Agregar timestamp de fecha de creación
         ]);
 
-        echo "Cita registrada con ID: " . $result->getInsertedId();
+       # echo "Cita registrada con ID: " . $result->getInsertedId();
     } catch (Exception $e) {
-        echo "Error al registrar la cita: " . $e->getMessage();
+       # echo "Error al registrar la cita: " . $e->getMessage();
     }
 }
 ?>

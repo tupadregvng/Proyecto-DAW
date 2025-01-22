@@ -49,18 +49,38 @@
             );
 
             return [
-                'success' => $result->getModifiedCount() > 0,
-                'message' => $result->getModifiedCount() > 0 ? "Proveedor actualizado con éxito." : "No se modificó ningún documento."
+                #'success' => $result->getModifiedCount() > 0,
+                #'message' => $result->getModifiedCount() > 0 ? "Proveedor actualizado con éxito." : "No se modificó ningún documento."
             ];
         } catch (Exception $e) {
-            return ['success' => false, 'message' => $e->getMessage()];
+            # return ['success' => false, 'message' => $e->getMessage()];
         }
     }
+    function deleteProovedor($id)
+    {
+        try {
+            $client = new MongoDB\Client("mongodb://localhost:27017");
+            $collection = $client->gestor->proovedores;
 
+            $result = $collection->deleteOne(['_id' => new MongoDB\BSON\ObjectId($id)]);
+            header('Location: ' . $_SERVER['PHP_SELF']);
+
+            return [
+                # 'success' => $result->getDeletedCount() > 0,
+                # 'message' => $result->getDeletedCount() > 0 ? "Cita eliminada con éxito." : "No se encontró la cita para eliminar."
+            ];
+        } catch (Exception $e) {
+            # return ['success' => false, 'message' => $e->getMessage()];
+        }
+    }
     $message = '';
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = updateProveedor($_POST);
-        $message = $result['message'];
+        # $message = $result['message'];
+    }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteId'])) {
+        $deleteId = $_POST['deleteId'];
+        $result = deleteProovedor($deleteId);
     }
     ?>
 
@@ -113,6 +133,7 @@
             <th>Dirección</th>
             <th>Notas</th>
             <th>Fecha</th>
+            <th>Eliminar</th>
         </tr>
         <?php
         try {
@@ -130,6 +151,12 @@
                 echo "<td class='direccion'>" . htmlspecialchars($entry->direccion) . "</td>";
                 echo "<td class='notas'>" . htmlspecialchars($entry->notas) . "</td>";
                 echo "<td>" . $timestamp->format('d/m/Y H:i') . "</td>";
+                echo "<td>
+                <form method='POST' action=''>
+                    <input type='hidden' name='deleteId' value='" . htmlspecialchars($entry->_id) . "'>
+                    <button type='submit' onclick='return confirm(\"¿Seguro que quieres eliminar este proovedor?\")'>Eliminar</button>
+                </form>
+              </td>";
                 echo "</tr>";
             }
         } catch (Exception $e) {

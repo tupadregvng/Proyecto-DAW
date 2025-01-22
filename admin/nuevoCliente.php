@@ -68,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'];
     $apellidos= $_POST['apellidos'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
     $role = 0; // Asignar rol de usuario (1 para admin)
     $direccion = $_POST['direccion'];
     $telefono = $_POST['telefono'];
@@ -88,9 +87,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'direccion' => $direccion
         ]);
 
-        echo "Usuario registrado con ID: " . $result->getInsertedId();
+        # echo "Usuario registrado con ID: " . $result->getInsertedId();
     } catch (Exception $e) {
-        echo "Error al registrar el usuario: " . $e->getMessage();
+        # echo "Error al registrar el usuario: " . $e->getMessage();
     }
 }
 ?>

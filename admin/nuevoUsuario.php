@@ -82,9 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'timestamp' => new MongoDB\BSON\UTCDateTime(new DateTime()) // Agregar timestamp de fecha de creación
         ]);
 
-        echo "Usuario registrado con ID: " . $result->getInsertedId();
+       # echo "Usuario registrado con ID: " . $result->getInsertedId();
     } catch (Exception $e) {
-        echo "Error al registrar el usuario: " . $e->getMessage();
+       # echo "Error al registrar el usuario: " . $e->getMessage();
     }
 }
 ?>
