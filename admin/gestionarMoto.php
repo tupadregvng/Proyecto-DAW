@@ -57,11 +57,31 @@
             # return ['success' => false, 'message' => $e->getMessage()];
         }
     }
+    function deleteMoto($id)
+    {
+        try {
+            $client = new MongoDB\Client("mongodb://localhost:27017");
+            $collection = $client->gestor->motos;
 
+            $result = $collection->deleteOne(['_id' => new MongoDB\BSON\ObjectId($id)]);
+            header('Location: ' . $_SERVER['PHP_SELF']);
+
+            return [
+                # 'success' => $result->getDeletedCount() > 0,
+                # 'message' => $result->getDeletedCount() > 0 ? "Cita eliminada con éxito." : "No se encontró la cita para eliminar."
+            ];
+        } catch (Exception $e) {
+            # return ['success' => false, 'message' => $e->getMessage()];
+        }
+    }
     $message = '';
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = updateMoto($_POST);
         # $message = $result['message'];
+    }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteId'])) {
+        $deleteId = $_POST['deleteId'];
+        $result = deleteMoto($deleteId);
     }
     ?>
 
@@ -119,6 +139,7 @@
             <th>Notas</th>
             <th>Estado</th>
             <th>Fecha</th>
+            <th>Eliminar</th>
         </tr>
         <?php
         try {
@@ -137,6 +158,12 @@
                 echo "<td class='notas'>" . htmlspecialchars($entry->notas) . "</td>";
                 echo "<td class='estado'>" . htmlspecialchars($entry->estado) . "</td>";
                 echo "<td>" . $timestamp->format('d/m/Y H:i') . "</td>";
+                echo "<td>
+                <form method='POST' action=''>
+                    <input type='hidden' name='deleteId' value='" . htmlspecialchars($entry->_id) . "'>
+                    <button type='submit' onclick='return confirm(\"¿Seguro que quieres eliminar esta moto?\")'>Eliminar</button>
+                </form>
+              </td>";
                 echo "</tr>";
             }
         } catch (Exception $e) {

@@ -68,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'];
     $apellidos= $_POST['apellidos'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
     $role = 0; // Asignar rol de usuario (1 para admin)
     $direccion = $_POST['direccion'];
     $telefono = $_POST['telefono'];
