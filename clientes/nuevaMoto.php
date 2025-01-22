@@ -32,10 +32,10 @@
         </div>
         <form action="nuevaMoto.php" method="POST">
             <label for="marca">Marca:</label>
-            <input type="text" id="marca" name="marca" required>
+            <input type="text" id="marca" name="marca" placeholder="Ingrese la marca del vehículo" required>
 
             <label for="modelo">Modelo:</label>
-            <input type="text" id="modelo" name="modelo" required>
+            <input type="text" id="modelo" name="modelo" placeholder="Ingrese el modelo del vehículo" required>
 
             <label for="bastidor">Nº Bastidor:</label>
             <input type="text" id="bastidor" name="bastidor" pattern="^[A-Za-z0-9]{17}$"  placeholder = "Nº de 17 dígitos" required>
