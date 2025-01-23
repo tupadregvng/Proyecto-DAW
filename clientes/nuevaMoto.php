@@ -27,7 +27,7 @@
         <!-- Título superior -->
         <div class="header">
             <?php
-            echo"<h1>BIENVENIDO ".$nombre."</h1>"
+            echo"<h1>Nueva moto</h1>"
             ?>
         </div>
         <form action="nuevaMoto.php" method="POST">
