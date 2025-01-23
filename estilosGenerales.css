@@ -113,7 +113,7 @@ button:hover {
 }
 /* Estilos de las tablas */
 table {
-    width: 100%; /* Hacer la tabla responsive */
+    width: 100%; 
     max-width: 600px;
     border-spacing: 0;
     border-radius: 10px;
@@ -139,7 +139,7 @@ td:first-child{
     background-image: url(img/fondorojo.jpg);
     color: white;
     font-family: "Audiowide", serif;
-    font-size: 18px; /* Tamaño de fuente */
-    font-weight: bold; /* Negrita */
+    font-size: 18px; 
+    font-weight: bold; 
 }
 
